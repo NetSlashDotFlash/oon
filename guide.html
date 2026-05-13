@@ -15,12 +15,9 @@
   --accent2: #7b5ea7;
   --text: #e8e0ff;
   --muted: #7a6ea0;
-  --fire: #e05a20;
-  --water: #2a7cc7;
-  --earth: #4a8a1a;
-  --air: #3aadcc;
-  --light: #ccaa22;
-  --shadow: #8833cc;
+  --rare: #ffcc55;
+  --rare-bg: rgba(255,204,85,0.08);
+  --rare-border: rgba(255,204,85,0.25);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -31,8 +28,6 @@ body {
   font-size: 18px;
   line-height: 1.7;
 }
-
-/* STARS BG */
 body::before {
   content: '';
   position: fixed;
@@ -51,7 +46,6 @@ body::before {
     radial-gradient(1px 1px at 33% 70%, rgba(200,180,255,0.4) 0%, transparent 100%);
   z-index: 0;
 }
-
 .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
 /* HERO */
@@ -102,7 +96,7 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 32px;
+  gap: 28px;
   flex-wrap: wrap;
 }
 nav a {
@@ -116,10 +110,7 @@ nav a {
 nav a:hover { color: var(--accent); }
 
 /* SECTIONS */
-section {
-  margin-bottom: 64px;
-  scroll-margin-top: 60px;
-}
+section { margin-bottom: 64px; scroll-margin-top: 60px; }
 h2.section-title {
   font-family: 'Cinzel', serif;
   font-size: 20px;
@@ -152,6 +143,10 @@ h2.section-title::after {
   padding: 20px 22px;
   margin-bottom: 12px;
 }
+.card.rare {
+  background: var(--rare-bg);
+  border-color: var(--rare-border);
+}
 .card-title {
   font-family: 'Cinzel', serif;
   font-size: 13px;
@@ -160,6 +155,7 @@ h2.section-title::after {
   color: var(--accent);
   margin-bottom: 8px;
 }
+.card.rare .card-title { color: var(--rare); }
 
 /* TIMER GRID */
 .timer-grid {
@@ -185,12 +181,7 @@ h2.section-title::after {
 .timer-desc { font-size: 14px; color: var(--muted); line-height: 1.5; }
 
 /* ELEMENT PILLS */
-.elements {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 16px 0;
-}
+.elements { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
 .el-pill {
   padding: 6px 16px;
   border-radius: 20px;
@@ -217,9 +208,43 @@ h2.section-title::after {
   font-size: 13px;
   color: var(--accent);
 }
+.trait.rare {
+  background: var(--rare-bg);
+  border-color: var(--rare-border);
+  color: var(--rare);
+}
 .trait .lvl { color: var(--accent2); font-size: 11px; margin-left: 2px; }
+.trait.rare .lvl { color: rgba(255,204,85,0.5); }
 
-/* PROGRESSION FLOW */
+/* LEVEL CURVE */
+.level-curve {
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+  margin: 16px 0 8px;
+  height: 60px;
+}
+.level-bar {
+  flex: 1;
+  background: rgba(196,170,255,0.15);
+  border-radius: 3px 3px 0 0;
+  border: 1px solid rgba(196,170,255,0.2);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 3px;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+.level-bar.rare {
+  background: rgba(255,204,85,0.1);
+  border-color: rgba(255,204,85,0.2);
+  color: rgba(255,204,85,0.5);
+}
+
+/* FLOW */
 .flow {
   display: flex;
   align-items: center;
@@ -239,6 +264,7 @@ h2.section-title::after {
   white-space: nowrap;
 }
 .flow-step.highlight { border-color: var(--accent2); color: var(--accent); }
+.flow-step.rare-step { border-color: var(--rare-border); color: var(--rare); background: var(--rare-bg); }
 .flow-arrow { color: var(--accent2); font-size: 18px; }
 
 /* SPRITE SHOWCASE */
@@ -249,12 +275,7 @@ h2.section-title::after {
   overflow: hidden;
   margin: 16px 0;
 }
-.sprite-showcase img {
-  width: 100%;
-  height: auto;
-  display: block;
-  image-rendering: pixelated;
-}
+.sprite-showcase img { width: 100%; height: auto; display: block; image-rendering: pixelated; }
 .sprite-caption {
   padding: 10px 16px;
   font-size: 12px;
@@ -265,11 +286,7 @@ h2.section-title::after {
 }
 
 /* ACTION TABLE */
-.action-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 15px;
-}
+.action-table { width: 100%; border-collapse: collapse; font-size: 15px; }
 .action-table th {
   font-family: 'Cinzel', serif;
   font-size: 11px;
@@ -285,6 +302,7 @@ h2.section-title::after {
   vertical-align: top;
 }
 .action-table tr:last-child td { border-bottom: none; }
+.action-table tr.unique-row td { background: var(--rare-bg); }
 .action-name {
   font-weight: 600;
   color: var(--accent);
@@ -292,11 +310,12 @@ h2.section-title::after {
   font-size: 12px;
   letter-spacing: 1px;
 }
+.action-name.unique { color: var(--rare); }
 .state-change { font-size: 13px; color: var(--muted); }
 .plus { color: #8acc50; }
 .minus { color: #e8804a; }
 
-/* DEPENDENCY CHART */
+/* DEP ROWS */
 .dep-row {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -321,8 +340,67 @@ h2.section-title::after {
   padding: 6px 12px;
   color: #c090ff;
 }
+.dep-from.rare-dep { background: var(--rare-bg); border-color: var(--rare-border); color: var(--rare); }
+.dep-to.rare-dep { background: rgba(255,204,85,0.08); border-color: rgba(255,204,85,0.2); color: var(--rare); }
 
-/* FOOTER */
+/* RACES GRID */
+.races-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 16px 0;
+}
+.race-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 13px;
+}
+.race-element {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.race-name {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.race-rare {
+  font-size: 12px;
+  color: var(--rare);
+  font-style: italic;
+}
+
+/* MYSTERY BOX */
+.mystery {
+  border: 1px solid rgba(196,170,255,0.15);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  margin-top: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.mystery::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(196,170,255,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.mystery-symbol { font-size: 36px; display: block; margin-bottom: 12px; opacity: 0.6; }
+.mystery-text {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+
 footer {
   text-align: center;
   padding: 40px 24px;
@@ -334,7 +412,7 @@ footer {
 
 @media (max-width: 600px) {
   .timer-grid { grid-template-columns: 1fr; }
-  .flow { gap: 6px; }
+  .races-grid { grid-template-columns: repeat(2, 1fr); }
   .flow-step { font-size: 11px; padding: 6px 10px; }
 }
 </style>
@@ -357,6 +435,7 @@ footer {
     <li><a href="#abilita">Abilità</a></li>
     <li><a href="#evoluzione">Evoluzione</a></li>
     <li><a href="#affinita">Affinità & Razze</a></li>
+    <li><a href="#ancient">Stadio Antico</a></li>
   </ul>
 </nav>
 
@@ -369,11 +448,11 @@ footer {
     <div class="card">
       <div class="card-title">NASCITA</div>
       <p>All'inizio del gioco ti viene consegnato un uovo. Dopo un breve tempo di attesa si schiude e nasce il tuo OON — una creatura unica con un nome generato casualmente, allo stadio <strong>Cucciolo</strong>, senza affinità elementale.</p>
-      <p style="margin-top:12px; color: var(--muted); font-size:15px;">Il suo futuro dipende interamente da te e dalle scelte che farai ogni giorno.</p>
+      <p style="margin-top:12px; color: var(--muted); font-size:15px">Il suo futuro dipende interamente dalle scelte che farai ogni giorno. Non esistono due OON uguali.</p>
     </div>
     <div class="sprite-showcase">
-      <img src="res/sprites_base512.png" alt="OON base - tutti i livelli e affinità">
-      <div class="sprite-caption">FORME BASE — Livello 1 · 2 · 3 &nbsp;·&nbsp; Acqua · Fuoco · Terra · Aria · Luce · Ombra</div>
+      <img src="res/sprites_base512.png" alt="OON base — tutti i livelli e affinità">
+      <div class="sprite-caption">FORME BASE — Cucciolo · Giovane · Antico &nbsp;·&nbsp; Acqua · Fuoco · Terra · Aria · Luce · Ombra</div>
     </div>
   </section>
 
@@ -385,7 +464,7 @@ footer {
       <div class="timer-card">
         <span class="timer-icon">☀️</span>
         <div class="timer-label">OGNI GIORNO</div>
-        <div class="timer-desc">Scegli <strong>1 azione</strong> tra quelle disponibili. Il risultato modifica gli stati e può far nascere nuovi tratti.</div>
+        <div class="timer-desc">Scegli <strong>1 azione</strong> tra quelle disponibili. Il risultato modifica gli stati e può far emergere nuovi tratti.</div>
       </div>
       <div class="timer-card">
         <span class="timer-icon">🌙</span>
@@ -395,7 +474,7 @@ footer {
       <div class="timer-card">
         <span class="timer-icon">✦</span>
         <div class="timer-label">OGNI MESE</div>
-        <div class="timer-desc">Possibili <strong>evoluzioni</strong>: lo stadio di crescita avanza, nasce o si rafforza un'affinità, o si sblocca una razza.</div>
+        <div class="timer-desc">Possibili <strong>evoluzioni</strong>: lo stadio di crescita avanza, nasce un'affinità, o si sblocca una razza.</div>
       </div>
     </div>
   </section>
@@ -404,7 +483,6 @@ footer {
   <section id="stati">
     <h2 class="section-title">Gli Stati</h2>
     <p class="section-intro">Quattro valori descrivono la condizione del tuo OON in ogni momento.</p>
-
     <div class="card">
       <div class="card-title">FAME</div>
       <p>Quanto l'OON è sazio. Se scende troppo, l'energia cala e le azioni disponibili si riducono. Un OON sempre ben nutrito tende a sviluppare tratti fisici.</p>
@@ -419,7 +497,7 @@ footer {
     </div>
     <div class="card">
       <div class="card-title">SALUTE</div>
-      <p>La condizione generale. Scende lentamente se gli altri stati sono trascurati a lungo. Se raggiunge zero l'OON si ammala e le azioni disponibili cambiano drasticamente.</p>
+      <p>La condizione generale. Scende lentamente se gli altri stati sono trascurati. Se raggiunge zero l'OON si ammala e le azioni disponibili cambiano drasticamente.</p>
     </div>
   </section>
 
@@ -427,45 +505,49 @@ footer {
   <section id="azioni">
     <h2 class="section-title">Le Azioni</h2>
     <p class="section-intro">Ogni giorno puoi compiere <strong>1 azione</strong> tra quelle disponibili. Le abilità possono aumentare questo numero nel tempo.</p>
-
     <table class="action-table">
       <thead>
         <tr>
           <th>Azione</th>
-          <th>Effetto sugli stati</th>
-          <th>Note</th>
+          <th>Effetto</th>
+          <th>Disponibilità</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><div class="action-name">MANGIA</div></td>
-          <td class="state-change"><span class="plus">↑ Fame</span> &nbsp;<span class="plus">↑ Energia</span></td>
-          <td class="state-change">Base sempre disponibile</td>
+          <td class="state-change"><span class="plus">↑ Fame &nbsp; ↑ Energia</span></td>
+          <td class="state-change">Sempre disponibile</td>
         </tr>
         <tr>
           <td><div class="action-name">DORMI</div></td>
-          <td class="state-change"><span class="plus">↑↑ Energia</span> &nbsp;<span class="plus">↑ Salute</span></td>
-          <td class="state-change">Base sempre disponibile</td>
+          <td class="state-change"><span class="plus">↑↑ Energia &nbsp; ↑ Salute</span></td>
+          <td class="state-change">Sempre disponibile</td>
         </tr>
         <tr>
           <td><div class="action-name">GIOCA</div></td>
           <td class="state-change"><span class="plus">↑↑ Umore</span> &nbsp;<span class="minus">↓ Energia</span></td>
-          <td class="state-change">Disponibile se Energia &gt; 30%</td>
+          <td class="state-change">Energia &gt; 30%</td>
         </tr>
         <tr>
           <td><div class="action-name">ESPLORA</div></td>
-          <td class="state-change"><span class="plus">↑ Umore</span> &nbsp;<span class="minus">↓ Energia</span> &nbsp;<span class="minus">↓ Fame</span></td>
-          <td class="state-change">Disponibile se Energia &gt; 50%</td>
+          <td class="state-change"><span class="plus">↑ Umore</span> &nbsp;<span class="minus">↓ Energia &nbsp; ↓ Fame</span></td>
+          <td class="state-change">Energia &gt; 50%</td>
         </tr>
         <tr>
           <td><div class="action-name">MEDITA</div></td>
-          <td class="state-change"><span class="plus">↑ Salute</span> &nbsp;<span class="plus">↑ Umore</span></td>
-          <td class="state-change">Si sblocca con il tratto Riflessivo</td>
+          <td class="state-change"><span class="plus">↑ Salute &nbsp; ↑ Umore</span></td>
+          <td class="state-change">Sblocco: tratto Riflessivo</td>
         </tr>
         <tr>
           <td><div class="action-name">CACCIA</div></td>
           <td class="state-change"><span class="plus">↑↑ Fame</span> &nbsp;<span class="minus">↓↓ Energia</span></td>
-          <td class="state-change">Si sblocca con l'abilità Predatore</td>
+          <td class="state-change">Sblocco: abilità Predatore</td>
+        </tr>
+        <tr class="unique-row">
+          <td><div class="action-name unique">AZIONE UNICA ✦</div></td>
+          <td class="state-change" style="color:var(--rare);font-size:13px">Dipende dalla razza</td>
+          <td class="state-change" style="color:var(--rare);font-size:13px">Solo OON Antico con abilità rara</td>
         </tr>
       </tbody>
     </table>
@@ -474,87 +556,122 @@ footer {
   <!-- TRATTI -->
   <section id="tratti">
     <h2 class="section-title">I Tratti</h2>
-    <p class="section-intro">I tratti emergono gradualmente in base alle scelte ripetute. Ogni tratto ha tre livelli — più alto è il livello, più forte è l'influenza sul gioco.</p>
+    <p class="section-intro">I tratti emergono in base alle scelte ripetute. Non hanno un limite di livello — ogni livello successivo è sempre più difficile da raggiungere.</p>
 
     <div class="card">
+      <div class="card-title">CURVA DI PROGRESSIONE</div>
+      <p style="font-size:15px;color:var(--muted);margin-bottom:12px">I primi livelli si ottengono in pochi giorni. Quelli alti richiedono settimane, poi mesi. Non esiste un massimo.</p>
+      <div class="level-curve">
+        <div class="level-bar" style="height:15%">1</div>
+        <div class="level-bar" style="height:22%">2</div>
+        <div class="level-bar" style="height:30%">3</div>
+        <div class="level-bar" style="height:40%">4</div>
+        <div class="level-bar" style="height:52%">5</div>
+        <div class="level-bar" style="height:65%">6</div>
+        <div class="level-bar" style="height:78%">7</div>
+        <div class="level-bar" style="height:88%">8</div>
+        <div class="level-bar" style="height:95%">9</div>
+        <div class="level-bar" style="height:100%">...</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
       <div class="card-title">TRATTI FISICI</div>
-      <p>Nascono da azioni ripetute legate al corpo: mangiare, dormire, esplorare.</p>
+      <p>Nascono da azioni legate al corpo: mangiare, dormire, esplorare.</p>
       <div class="traits">
-        <span class="trait">Resistente<span class="lvl"> 1·2·3</span></span>
-        <span class="trait">Agile<span class="lvl"> 1·2·3</span></span>
-        <span class="trait">Robusto<span class="lvl"> 1·2·3</span></span>
-        <span class="trait">Notturno<span class="lvl"> 1·2·3</span></span>
+        <span class="trait">Resistente</span>
+        <span class="trait">Agile</span>
+        <span class="trait">Robusto</span>
+        <span class="trait">Notturno</span>
       </div>
     </div>
     <div class="card">
       <div class="card-title">TRATTI MENTALI</div>
-      <p>Nascono da abitudini ripetute legate all'umore e alle scelte passive.</p>
+      <p>Nascono da abitudini legate all'umore e alle scelte passive.</p>
       <div class="traits">
-        <span class="trait">Vivace<span class="lvl"> 1·2·3</span></span>
-        <span class="trait">Riflessivo<span class="lvl"> 1·2·3</span></span>
-        <span class="trait">Curioso<span class="lvl"> 1·2·3</span></span>
-        <span class="trait">Solitario<span class="lvl"> 1·2·3</span></span>
+        <span class="trait">Vivace</span>
+        <span class="trait">Riflessivo</span>
+        <span class="trait">Curioso</span>
+        <span class="trait">Solitario</span>
       </div>
     </div>
     <div class="card">
       <div class="card-title">TRATTI ELEMENTALI</div>
-      <p>Emergono solo in certi stati o combinazioni. Sono precursori delle affinità elementali.</p>
+      <p>Emergono in certi stati o combinazioni. Sono i precursori delle affinità elementali.</p>
       <div class="traits">
-        <span class="trait">Ardente<span class="lvl"> 1·2·3</span></span>
-        <span class="trait">Umido<span class="lvl"> 1·2·3</span></span>
-        <span class="trait">Radicato<span class="lvl"> 1·2·3</span></span>
-        <span class="trait">Leggero<span class="lvl"> 1·2·3</span></span>
-        <span class="trait">Luminoso<span class="lvl"> 1·2·3</span></span>
-        <span class="trait">Oscuro<span class="lvl"> 1·2·3</span></span>
+        <span class="trait">Ardente</span>
+        <span class="trait">Umido</span>
+        <span class="trait">Radicato</span>
+        <span class="trait">Leggero</span>
+        <span class="trait">Luminoso</span>
+        <span class="trait">Oscuro</span>
       </div>
+    </div>
+
+    <div class="card rare" style="margin-top:16px">
+      <div class="card-title">TRATTI RARI ✦</div>
+      <p>Si sbloccano solo quando l'OON ha raggiunto lo stadio Antico con una razza completa. Sono unici per ogni razza e la loro curva di livellamento è esponenzialmente più ripida.</p>
+      <div class="traits" style="margin-top:12px">
+        <span class="trait rare">Fiamma Primordiale <span class="lvl">(Ember)</span></span>
+        <span class="trait rare">Abisso Cristallizzato <span class="lvl">(Abyssal)</span></span>
+        <span class="trait rare">Velo Eterno <span class="lvl">(Void)</span></span>
+        <span class="trait rare">Luce Siderale <span class="lvl">(Seraph)</span></span>
+        <span class="trait rare">... molti altri</span>
+      </div>
+      <p style="margin-top:12px;font-size:14px;color:var(--muted)">Levellare un tratto raro è l'obiettivo a lungo termine del gioco. Non esiste un livello massimo.</p>
     </div>
   </section>
 
   <!-- ABILITÀ -->
   <section id="abilita">
     <h2 class="section-title">Le Abilità</h2>
-    <p class="section-intro">A fine settimana, se le condizioni sono soddisfatte, possono nascere abilità permanenti che cambiano le regole del gioco.</p>
+    <p class="section-intro">A fine settimana i tratti accumulati possono generare abilità permanenti. Anche le abilità non hanno limite di livello.</p>
 
     <div class="dep-row">
-      <div class="dep-from">Vivace 2 + Curioso 1</div>
+      <div class="dep-from">Vivace + Curioso</div>
       <div class="dep-arrow">→</div>
-      <div class="dep-to"><strong>Intelligenza 1</strong> — +1 azione disponibile al giorno</div>
+      <div class="dep-to"><strong>Intelligenza</strong> — +1 azione disponibile al giorno</div>
     </div>
     <div class="dep-row">
-      <div class="dep-from">Agile 2 + Resistente 1</div>
+      <div class="dep-from">Agile + Resistente</div>
       <div class="dep-arrow">→</div>
-      <div class="dep-to"><strong>Predatore 1</strong> — sblocca l'azione Caccia</div>
+      <div class="dep-to"><strong>Predatore</strong> — sblocca l'azione Caccia</div>
     </div>
     <div class="dep-row">
-      <div class="dep-from">Riflessivo 2</div>
+      <div class="dep-from">Riflessivo</div>
       <div class="dep-arrow">→</div>
-      <div class="dep-to"><strong>Meditazione 1</strong> — sblocca l'azione Medita</div>
+      <div class="dep-to"><strong>Meditazione</strong> — sblocca l'azione Medita</div>
     </div>
     <div class="dep-row">
-      <div class="dep-from">Notturno 2 + Solitario 1</div>
+      <div class="dep-from">Notturno + Solitario</div>
       <div class="dep-arrow">→</div>
-      <div class="dep-to"><strong>Sensi Acuti 1</strong> — l'Esplora consuma meno energia</div>
+      <div class="dep-to"><strong>Sensi Acuti</strong> — Esplora consuma meno energia</div>
     </div>
     <div class="dep-row">
-      <div class="dep-from">Robusto 3</div>
+      <div class="dep-from">Robusto</div>
       <div class="dep-arrow">→</div>
-      <div class="dep-to"><strong>Vitalità 1</strong> — la Salute scende più lentamente</div>
+      <div class="dep-to"><strong>Vitalità</strong> — la Salute scende più lentamente</div>
     </div>
 
-    <div class="card" style="margin-top:16px">
-      <div class="card-title">NOTA</div>
-      <p style="color:var(--muted);font-size:15px">Le abilità hanno a loro volta livelli crescenti. Ogni livello superiore richiede il livello precedente dell'abilità più tratti aggiuntivi. Un'abilità al livello 3 può diventare prerequisito per le evoluzioni mensili.</p>
+    <div class="card rare" style="margin-top:20px">
+      <div class="card-title">ABILITÀ UNICHE ✦</div>
+      <p>Derivano dai tratti rari. Ogni razza può sviluppare una sola abilità unica, che a sua volta sblocca un'azione unica disponibile solo a quell'OON.</p>
+      <div class="dep-row" style="margin-top:14px">
+        <div class="dep-from rare-dep">Fiamma Primordiale (alto livello)</div>
+        <div class="dep-arrow">→</div>
+        <div class="dep-to rare-dep"><strong>Abilità Unica Ember</strong> → Azione unica</div>
+      </div>
     </div>
   </section>
 
   <!-- EVOLUZIONE -->
   <section id="evoluzione">
     <h2 class="section-title">Evoluzione</h2>
-    <p class="section-intro">A fine mese il gioco valuta lo stato complessivo dell'OON. Se le condizioni sono mature, qualcosa cambia.</p>
+    <p class="section-intro">A fine mese il gioco valuta lo stato complessivo. Se le condizioni sono mature, qualcosa cambia.</p>
 
     <div class="card">
-      <div class="card-title">CRESCITA</div>
-      <p>L'OON avanza di stadio: da Cucciolo a Giovane, da Giovane ad Antico. La crescita richiede uno stato generale equilibrato e almeno alcune settimane di sviluppo continuo.</p>
+      <div class="card-title">CRESCITA DI STADIO</div>
+      <p>Per avanzare di stadio servono tratti specifici a un livello sufficiente. La soglia aumenta ad ogni passaggio — diventare Antico richiede molto più impegno che diventare Giovane.</p>
       <div class="flow" style="margin-top:14px">
         <div class="flow-step highlight">Cucciolo</div>
         <div class="flow-arrow">→</div>
@@ -563,47 +680,83 @@ footer {
         <div class="flow-step">Antico</div>
       </div>
     </div>
+
     <div class="card">
       <div class="card-title">AFFINITÀ ELEMENTALE</div>
-      <p>Se un tratto elementale ha raggiunto un livello sufficiente, a fine mese può cristallizzarsi in un'affinità permanente. L'OON cambia aspetto e acquisisce nuove caratteristiche legate all'elemento.</p>
+      <p>Se un tratto elementale ha raggiunto il livello richiesto, a fine mese può cristallizzarsi in affinità. L'OON cambia aspetto e acquisisce nuove caratteristiche legate all'elemento.</p>
+      <div class="elements" style="margin-top:12px">
+        <span class="el-pill el-fire">🔥 Fuoco</span>
+        <span class="el-pill el-water">💧 Acqua</span>
+        <span class="el-pill el-earth">🌿 Terra</span>
+        <span class="el-pill el-air">💨 Aria</span>
+        <span class="el-pill el-light">✨ Luce</span>
+        <span class="el-pill el-shadow">🌑 Ombra</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">RAZZA</div>
+      <p>Dopo aver ottenuto un'affinità, nel tempo l'OON può specializzarsi in una delle tre razze disponibili per quell'elemento. La razza dipende dalla combinazione specifica di tratti e abilità sviluppati.</p>
     </div>
   </section>
 
   <!-- AFFINITÀ E RAZZE -->
   <section id="affinita">
     <h2 class="section-title">Affinità & Razze</h2>
-    <p class="section-intro">Una volta ottenuta un'affinità elementale, nel tempo l'OON può specializzarsi ulteriormente e assumere una razza specifica.</p>
-
-    <div class="elements">
-      <span class="el-pill el-fire">🔥 Fuoco</span>
-      <span class="el-pill el-water">💧 Acqua</span>
-      <span class="el-pill el-earth">🌿 Terra</span>
-      <span class="el-pill el-air">💨 Aria</span>
-      <span class="el-pill el-light">✨ Luce</span>
-      <span class="el-pill el-shadow">🌑 Ombra</span>
-    </div>
-
-    <div class="card">
-      <div class="card-title">ESEMPIO — AFFINITÀ FUOCO</div>
-      <div class="flow">
-        <div class="flow-step highlight">OON Fuoco</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step">Ember OON</div>
-        <div class="flow-arrow">o</div>
-        <div class="flow-step">Ashfang OON</div>
-        <div class="flow-arrow">o</div>
-        <div class="flow-step">Infernal OON</div>
-      </div>
-      <p style="margin-top:10px; color:var(--muted); font-size:15px">Quale razza emerge dipende dalla combinazione di tratti e abilità acquisiti. Ogni razza ha tre stadi: Young · Teen · Ancient.</p>
-    </div>
+    <p class="section-intro">18 razze distribuite su 6 elementi. Ognuna con tre stadi di crescita e un percorso unico.</p>
 
     <div class="sprite-showcase">
-      <img src="res/sprites512.png" alt="OON razze - tutti i tipi e stadi evolutivi">
+      <img src="res/sprites512.png" alt="OON razze — tutti i tipi e stadi evolutivi">
       <div class="sprite-caption">RAZZE OON — 18 varianti · Stadi Young · Teen · Ancient</div>
     </div>
 
-    <div class="card" style="margin-top:4px">
-      <div class="card-title">PERCORSO COMPLETO</div>
+    <div class="races-grid">
+      <div class="race-card">
+        <div class="race-element">🔥 FUOCO</div>
+        <div class="race-name">Ember OON</div>
+        <div class="race-name">Ashfang OON</div>
+        <div class="race-name">Infernal OON</div>
+        <div class="race-rare">✦ tratti rari unici</div>
+      </div>
+      <div class="race-card">
+        <div class="race-element">💧 ACQUA</div>
+        <div class="race-name">Tide OON</div>
+        <div class="race-name">Dreamcurrent OON</div>
+        <div class="race-name">Abyssal OON</div>
+        <div class="race-rare">✦ tratti rari unici</div>
+      </div>
+      <div class="race-card">
+        <div class="race-element">🌿 TERRA</div>
+        <div class="race-name">Mossback OON</div>
+        <div class="race-name">Crystalroot OON</div>
+        <div class="race-name">Ancient Grove OON</div>
+        <div class="race-rare">✦ tratti rari unici</div>
+      </div>
+      <div class="race-card">
+        <div class="race-element">💨 ARIA</div>
+        <div class="race-name">Gale OON</div>
+        <div class="race-name">Echowing OON</div>
+        <div class="race-name">Stormveil OON</div>
+        <div class="race-rare">✦ tratti rari unici</div>
+      </div>
+      <div class="race-card">
+        <div class="race-element">✨ LUCE</div>
+        <div class="race-name">Halo OON</div>
+        <div class="race-name">Starborn OON</div>
+        <div class="race-name">Seraph OON</div>
+        <div class="race-rare">✦ tratti rari unici</div>
+      </div>
+      <div class="race-card">
+        <div class="race-element">🌑 OMBRA</div>
+        <div class="race-name">Hollow OON</div>
+        <div class="race-name">Duskmaw OON</div>
+        <div class="race-name">Void OON</div>
+        <div class="race-rare">✦ tratti rari unici</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">PERCORSO COMPLETO — ESEMPIO</div>
       <div class="flow">
         <div class="flow-step highlight">Uovo</div>
         <div class="flow-arrow">→</div>
@@ -616,7 +769,32 @@ footer {
         <div class="flow-step">Ember OON Teen</div>
         <div class="flow-arrow">→</div>
         <div class="flow-step">Ember OON Ancient</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step rare-step">✦ Tratti Rari</div>
       </div>
+    </div>
+  </section>
+
+  <!-- STADIO ANTICO -->
+  <section id="ancient">
+    <h2 class="section-title">Stadio Antico</h2>
+    <p class="section-intro">Raggiungere lo stadio Antico con una razza completa è solo l'inizio del percorso più lungo.</p>
+
+    <div class="card rare">
+      <div class="card-title">IL LOOP A LUNGO TERMINE</div>
+      <p>Un OON Antico con razza sbloccata accede ai tratti rari esclusivi della sua razza. Levellare questi tratti non ha fine — ogni livello richiede esponenzialmente più tempo del precedente.</p>
+      <p style="margin-top:12px;font-size:15px;color:var(--muted)">I tratti rari ad alto livello generano abilità uniche. Le abilità uniche sbloccano azioni che nessun altro OON può compiere.</p>
+    </div>
+
+    <div class="card rare" style="margin-top:4px">
+      <div class="card-title">OGNI RAZZA È UN PERCORSO DIVERSO</div>
+      <p>I tratti rari, le abilità uniche e le azioni esclusive sono specifici per ogni razza. Un Void OON Ancient avrà un percorso completamente diverso da un Seraph OON Ancient.</p>
+      <p style="margin-top:12px;font-size:15px;color:var(--muted)">Questo significa che chi vuole esplorare tutto ha 18 percorsi distinti davanti a sé.</p>
+    </div>
+
+    <div class="mystery">
+      <span class="mystery-symbol">✦</span>
+      <p class="mystery-text">oltre lo stadio antico, qualcosa attende</p>
     </div>
   </section>
 
