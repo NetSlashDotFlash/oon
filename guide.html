@@ -7,117 +7,111 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #08070f;
-  --card: #14112a;
-  --border: #2a2250;
-  --accent: #c4aaff;
-  --accent2: #7b5ea7;
-  --text: #e8e0ff;
-  --muted: #7a6ea0;
-  --rare: #ffcc55;
-  --rare-bg: rgba(255,204,85,0.08);
-  --rare-border: rgba(255,204,85,0.25);
+  --bg:#08070f; --card:#14112a; --border:#2a2250;
+  --accent:#c4aaff; --accent2:#7b5ea7; --text:#e8e0ff; --muted:#7a6ea0;
+  --rare:#ffcc55; --rare-bg:rgba(255,204,85,0.08); --rare-border:rgba(255,204,85,0.25);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--text); font-family: 'Crimson Text', serif; font-size: 18px; line-height: 1.7; }
-body::before {
-  content: ''; position: fixed; inset: 0; pointer-events: none;
-  background-image:
-    radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 85% 8%, rgba(180,160,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 42% 55%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 72% 82%, rgba(200,180,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 25% 90%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 92% 40%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 58% 15%, rgba(180,200,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 5% 50%, rgba(255,255,255,0.2) 0%, transparent 100%),
-    radial-gradient(1px 1px at 65% 40%, rgba(255,255,255,0.2) 0%, transparent 100%),
-    radial-gradient(1px 1px at 33% 70%, rgba(200,180,255,0.3) 0%, transparent 100%);
-  z-index: 0;
-}
-.wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Crimson Text',serif;font-size:18px;line-height:1.7}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;background-image:
+  radial-gradient(1px 1px at 15% 20%,rgba(255,255,255,.5) 0%,transparent 100%),
+  radial-gradient(1px 1px at 85% 8%,rgba(180,160,255,.4) 0%,transparent 100%),
+  radial-gradient(1px 1px at 42% 55%,rgba(255,255,255,.3) 0%,transparent 100%),
+  radial-gradient(1px 1px at 72% 82%,rgba(200,180,255,.4) 0%,transparent 100%),
+  radial-gradient(1px 1px at 25% 90%,rgba(255,255,255,.3) 0%,transparent 100%),
+  radial-gradient(1px 1px at 92% 40%,rgba(255,255,255,.3) 0%,transparent 100%),
+  radial-gradient(1px 1px at 58% 15%,rgba(180,200,255,.4) 0%,transparent 100%),
+  radial-gradient(1px 1px at 33% 70%,rgba(200,180,255,.3) 0%,transparent 100%);z-index:0}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
 
-.hero { text-align: center; padding: 70px 24px 50px; }
-.hero-egg { font-size: 72px; display: block; margin: 0 auto 16px; animation: float 3s ease-in-out infinite; }
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-h1.title { font-family:'Cinzel',serif; font-size:clamp(32px,6vw,52px); font-weight:700; letter-spacing:6px; color:var(--accent); text-shadow:0 0 40px rgba(196,170,255,0.4); margin-bottom:10px; }
-.tagline { font-size:16px; color:var(--muted); letter-spacing:2px; font-style:italic; }
+.hero{text-align:center;padding:70px 24px 50px}
+.hero-egg{font-size:72px;display:block;margin:0 auto 16px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+h1.title{font-family:'Cinzel',serif;font-size:clamp(32px,6vw,52px);font-weight:700;letter-spacing:6px;color:var(--accent);text-shadow:0 0 40px rgba(196,170,255,.4);margin-bottom:10px}
+.tagline{font-size:16px;color:var(--muted);letter-spacing:2px;font-style:italic}
 
-nav { border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:14px 0; margin-bottom:50px; position:sticky; top:0; background:rgba(8,7,15,0.95); backdrop-filter:blur(8px); z-index:100; }
-nav ul { list-style:none; display:flex; justify-content:center; gap:24px; flex-wrap:wrap; }
-nav a { color:var(--muted); text-decoration:none; font-family:'Cinzel',serif; font-size:10px; letter-spacing:2px; transition:color 0.2s; }
-nav a:hover { color:var(--accent); }
+nav{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;margin-bottom:50px;position:sticky;top:0;background:rgba(8,7,15,.95);backdrop-filter:blur(8px);z-index:100}
+nav ul{list-style:none;display:flex;justify-content:center;gap:22px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;transition:color .2s}
+nav a:hover{color:var(--accent)}
 
-section { margin-bottom:64px; scroll-margin-top:60px; }
-h2.section-title { font-family:'Cinzel',serif; font-size:20px; font-weight:600; letter-spacing:3px; color:var(--accent); margin-bottom:6px; display:flex; align-items:center; gap:12px; }
-h2.section-title::after { content:''; flex:1; height:1px; background:var(--border); }
-.section-intro { color:var(--muted); font-size:15px; margin-bottom:24px; letter-spacing:0.5px; }
+section{margin-bottom:64px;scroll-margin-top:60px}
+h2.section-title{font-family:'Cinzel',serif;font-size:20px;font-weight:600;letter-spacing:3px;color:var(--accent);margin-bottom:6px;display:flex;align-items:center;gap:12px}
+h2.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-intro{color:var(--muted);font-size:15px;margin-bottom:24px;letter-spacing:.5px}
 
-.card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 22px; margin-bottom:12px; }
-.card.rare { background:var(--rare-bg); border-color:var(--rare-border); }
-.card-title { font-family:'Cinzel',serif; font-size:13px; font-weight:600; letter-spacing:2px; color:var(--accent); margin-bottom:8px; }
-.card.rare .card-title { color:var(--rare); }
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:12px}
+.card.rare{background:var(--rare-bg);border-color:var(--rare-border)}
+.card-title{font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:2px;color:var(--accent);margin-bottom:8px}
+.card.rare .card-title{color:var(--rare)}
 
-.timer-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-.timer-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 16px; text-align:center; }
-.timer-icon { font-size:28px; margin-bottom:8px; display:block; }
-.timer-label { font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--accent2); margin-bottom:8px; }
-.timer-desc { font-size:14px; color:var(--muted); line-height:1.5; }
+.timer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.timer-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 16px;text-align:center}
+.timer-icon{font-size:28px;margin-bottom:8px;display:block}
+.timer-label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;color:var(--accent2);margin-bottom:8px}
+.timer-desc{font-size:14px;color:var(--muted);line-height:1.5}
 
-.flow { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:16px 0; }
-.flow-step { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:8px 14px; font-size:13px; font-family:'Cinzel',serif; letter-spacing:1px; color:var(--muted); white-space:nowrap; }
-.flow-step.hl { border-color:var(--accent2); color:var(--accent); }
-.flow-step.rare-step { border-color:var(--rare-border); color:var(--rare); background:var(--rare-bg); }
-.flow-arrow { color:var(--accent2); font-size:18px; }
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0}
+.flow-step{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;font-family:'Cinzel',serif;letter-spacing:1px;color:var(--muted);white-space:nowrap}
+.flow-step.hl{border-color:var(--accent2);color:var(--accent)}
+.flow-step.rare-step{border-color:var(--rare-border);color:var(--rare);background:var(--rare-bg)}
+.flow-arrow{color:var(--accent2);font-size:18px}
 
-.tbl { width:100%; border-collapse:collapse; font-size:15px; margin:16px 0; }
-.tbl th { font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--accent2); padding:8px 12px; text-align:left; border-bottom:1px solid var(--border); }
-.tbl td { padding:9px 12px; border-bottom:1px solid rgba(42,34,80,0.4); vertical-align:top; font-size:14px; }
-.tbl tr:last-child td { border-bottom:none; }
-.tbl td:first-child { font-family:'Cinzel',serif; font-size:12px; color:var(--accent); letter-spacing:1px; }
-.plus { color:#8acc50; } .minus { color:#e8804a; }
-.tbl tr.rare-row td { background:var(--rare-bg); }
-.tbl tr.rare-row td:first-child { color:var(--rare); }
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
+.tbl th{font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;color:var(--accent2);padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)}
+.tbl td{padding:8px 10px;border-bottom:1px solid rgba(42,34,80,.4);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{font-family:'Cinzel',serif;font-size:12px;color:var(--accent);letter-spacing:.5px}
+.tbl tr.rare-row td{background:var(--rare-bg)}
+.tbl tr.rare-row td:first-child{color:var(--rare)}
+.up{color:#8acc50}.down{color:#e8804a}.neutral{color:var(--muted)}
+.up2{color:#5ddd20;font-weight:600}.down2{color:#ff6020;font-weight:600}
 
-.traits { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
-.trait { background:rgba(196,170,255,0.08); border:1px solid rgba(196,170,255,0.2); border-radius:6px; padding:4px 12px; font-size:13px; color:var(--accent); }
-.trait.rare { background:var(--rare-bg); border-color:var(--rare-border); color:var(--rare); }
-.trait.ex { background:rgba(226,75,74,0.08); border-color:rgba(226,75,74,0.25); color:#f09595; }
+.states-diagram{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.state-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
+.state-name{font-family:'Cinzel',serif;font-size:13px;color:var(--accent);margin-bottom:10px;letter-spacing:1px}
+.state-poles{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.pole{flex:1;border-radius:6px;padding:6px 4px;font-size:12px;text-align:center}
+.pole.high{background:rgba(138,204,80,.1);border:1px solid rgba(138,204,80,.25);color:#8acc50}
+.pole.low{background:rgba(232,128,74,.1);border:1px solid rgba(232,128,74,.25);color:#e8804a}
+.pole-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;margin-bottom:3px;opacity:.7}
+.pole-trait{font-size:12px;font-weight:600}
+.pole-aff{font-size:10px;opacity:.7;margin-top:2px}
+.state-vs{color:var(--muted);font-size:12px}
 
-.pairs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:16px 0; }
-.pair-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px 12px; text-align:center; }
-.pair-names { display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:8px; }
-.pair-name { font-family:'Cinzel',serif; font-size:12px; color:var(--accent); }
-.pair-x { color:#f09595; font-size:14px; }
-.pair-arrow { font-size:11px; color:var(--muted); margin-top:4px; }
+.pairs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.pair-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
+.pair-names{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px}
+.pair-name{font-family:'Cinzel',serif;font-size:12px;color:var(--accent)}
+.pair-x{color:#f09595;font-size:14px}
 
-.el-pill { display:inline-block; padding:4px 14px; border-radius:20px; font-family:'Cinzel',serif; font-size:11px; letter-spacing:1px; font-weight:600; border:1px solid transparent; margin:3px; }
-.el-fire   { background:rgba(224,90,32,0.15);  color:#e8804a; border-color:rgba(224,90,32,0.3); }
-.el-water  { background:rgba(42,124,199,0.15); color:#6ab0ee; border-color:rgba(42,124,199,0.3); }
-.el-earth  { background:rgba(74,138,26,0.15);  color:#8acc50; border-color:rgba(74,138,26,0.3); }
-.el-air    { background:rgba(58,173,204,0.15); color:#70d0e8; border-color:rgba(58,173,204,0.3); }
-.el-light  { background:rgba(204,170,34,0.15); color:#e8cc60; border-color:rgba(204,170,34,0.3); }
-.el-shadow { background:rgba(136,51,204,0.15); color:#bb77ee; border-color:rgba(136,51,204,0.3); }
+.el-pill{display:inline-block;padding:4px 12px;border-radius:20px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;font-weight:600;border:1px solid transparent;margin:2px}
+.el-fire{background:rgba(224,90,32,.15);color:#e8804a;border-color:rgba(224,90,32,.3)}
+.el-water{background:rgba(42,124,199,.15);color:#6ab0ee;border-color:rgba(42,124,199,.3)}
+.el-earth{background:rgba(74,138,26,.15);color:#8acc50;border-color:rgba(74,138,26,.3)}
+.el-air{background:rgba(58,173,204,.15);color:#70d0e8;border-color:rgba(58,173,204,.3)}
+.el-light{background:rgba(204,170,34,.15);color:#e8cc60;border-color:rgba(204,170,34,.3)}
+.el-shadow{background:rgba(136,51,204,.15);color:#bb77ee;border-color:rgba(136,51,204,.3)}
 
-.races-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:16px 0; }
-.race-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:12px; }
-.race-el { font-family:'Cinzel',serif; font-size:9px; letter-spacing:1px; color:var(--muted); margin-bottom:6px; }
-.race-name { font-family:'Cinzel',serif; font-size:11px; color:var(--accent); margin-bottom:3px; }
-.race-ability { font-size:12px; color:var(--muted); font-style:italic; }
+.races-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.race-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px}
+.race-el{font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;color:var(--muted);margin-bottom:6px}
+.race-name{font-family:'Cinzel',serif;font-size:11px;color:var(--accent);margin-bottom:2px}
+.race-ability{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:8px}
 
-.sprite-showcase { background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin:16px 0; }
-.sprite-showcase img { width:100%; height:auto; display:block; image-rendering:pixelated; }
-.sprite-caption { padding:10px 16px; font-size:12px; color:var(--muted); letter-spacing:1px; font-family:'Cinzel',serif; border-top:1px solid var(--border); }
+.sprite-showcase{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:16px 0}
+.sprite-showcase img{width:100%;height:auto;display:block;image-rendering:pixelated}
+.sprite-caption{padding:10px 16px;font-size:12px;color:var(--muted);letter-spacing:1px;font-family:'Cinzel',serif;border-top:1px solid var(--border)}
 
-.mystery { border:1px solid rgba(196,170,255,0.15); border-radius:12px; padding:30px; text-align:center; margin-top:16px; }
-.mystery-symbol { font-size:36px; display:block; margin-bottom:12px; opacity:0.5; }
-.mystery-text { font-family:'Cinzel',serif; font-size:13px; letter-spacing:3px; color:var(--muted); }
+.mystery{border:1px solid rgba(196,170,255,.15);border-radius:12px;padding:30px;text-align:center;margin-top:16px}
+.mystery-symbol{font-size:36px;display:block;margin-bottom:12px;opacity:.5}
+.mystery-text{font-family:'Cinzel',serif;font-size:13px;letter-spacing:3px;color:var(--muted)}
 
-footer { text-align:center; padding:40px 24px; color:var(--muted); font-size:13px; letter-spacing:1px; border-top:1px solid var(--border); }
+footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:13px;letter-spacing:1px;border-top:1px solid var(--border)}
 
 @media(max-width:600px){
-  .timer-grid,.pairs-grid,.races-grid{grid-template-columns:1fr}
+  .timer-grid,.pairs-grid,.races-grid,.states-diagram{grid-template-columns:1fr}
   .flow-step{font-size:11px;padding:6px 10px}
 }
 </style>
@@ -134,8 +128,8 @@ footer { text-align:center; padding:40px 24px; color:var(--muted); font-size:13p
   <li><a href="#inizio">Inizio</a></li>
   <li><a href="#tempo">Tempo</a></li>
   <li><a href="#stati">Stati</a></li>
-  <li><a href="#interazioni">Interazioni</a></li>
   <li><a href="#tratti">Tratti</a></li>
+  <li><a href="#interazioni">Interazioni</a></li>
   <li><a href="#azioni">Azioni</a></li>
   <li><a href="#abilita">Abilità</a></li>
   <li><a href="#affinita">Affinità</a></li>
@@ -168,7 +162,7 @@ footer { text-align:center; padding:40px 24px; color:var(--muted); font-size:13p
     <div class="timer-card">
       <span class="timer-icon">☀️</span>
       <div class="timer-label">OGNI GIORNO</div>
-      <div class="timer-desc">Le interazioni accumulano punti. A fine giornata viene calcolata la probabilità di nascita o crescita di ogni tratto.</div>
+      <div class="timer-desc">Le interazioni modificano gli stati. Gli stati determinano la probabilità di nascita o crescita di ogni tratto.</div>
     </div>
     <div class="timer-card">
       <span class="timer-icon">🌙</span>
@@ -178,110 +172,145 @@ footer { text-align:center; padding:40px 24px; color:var(--muted); font-size:13p
     <div class="timer-card">
       <span class="timer-icon">✦</span>
       <div class="timer-label">OGNI MESE</div>
-      <div class="timer-desc">I tratti vengono valutati per <strong>affinità elementali</strong>, <strong>razze</strong> e <strong>crescita di stadio</strong>. Le evoluzioni più rare richiedono mesi.</div>
+      <div class="timer-desc">I tratti vengono valutati per <strong>affinità elementali</strong>, <strong>razze</strong> e <strong>crescita di stadio</strong>.</div>
     </div>
   </div>
   <div class="card" style="margin-top:16px">
     <div class="card-title">GIORNI DI ASSENZA</div>
-    <p>Se non ti colleghi, i giorni mancanti vengono simulati al rientro. Le azioni assenti vengono risolte con valori medi e il caso pesa di più. Un'assenza prolungata sviluppa i tratti <strong>Solitario</strong> e accumula contatori <strong>Ombra</strong> — il tuo OON deriva lentamente verso un path oscuro, senza limiti e senza ritorno.</p>
-    <p style="margin-top:10px;font-size:15px;color:var(--muted)">Un solo login senza interazioni equivale all'assenza totale. Per essere presente devi fare almeno: login + tap + azione.</p>
+    <p>Se non ti colleghi, i giorni mancanti vengono simulati al rientro con valori medi e più caso. Col tempo l'energia sale, l'umore e la socialità scendono — il tuo OON deriva verso Robusto, Riflessivo e Solitario, e quindi verso Terra, Acqua e Ombra. Un'assenza prolungata è irreversibile.</p>
+    <p style="margin-top:10px;font-size:15px;color:var(--muted)">Un solo login senza interazioni equivale all'assenza. Per essere presente: login + tap + azione.</p>
   </div>
 </section>
 
 <!-- STATI -->
 <section id="stati">
   <h2 class="section-title">Gli Stati</h2>
-  <p class="section-intro">Quattro valori descrivono la condizione del tuo OON in ogni momento.</p>
-  <div class="card"><div class="card-title">FAME</div><p>Quanto l'OON è sazio. Se scende, l'energia cala e le azioni disponibili si riducono.</p></div>
-  <div class="card"><div class="card-title">ENERGIA</div><p>Si consuma con le azioni attive, si recupera con il riposo. Alcune azioni richiedono un minimo di energia.</p></div>
-  <div class="card"><div class="card-title">UMORE</div><p>Influenza la probabilità con cui certi tratti emergono. Alto favorisce tratti attivi; basso favorisce tratti introversi.</p></div>
-  <div class="card"><div class="card-title">SALUTE</div><p>Scende lentamente se gli altri stati sono trascurati. Se raggiunge zero l'OON si ammala.</p></div>
-</section>
+  <p class="section-intro">Tre stati descrivono la condizione del tuo OON. Ogni stato ha due polarità — alta e bassa — che favoriscono tratti opposti. Col passare del tempo senza interazioni, l'energia sale, l'umore e la socialità scendono.</p>
 
-<!-- INTERAZIONI -->
-<section id="interazioni">
-  <h2 class="section-title">Le Interazioni</h2>
-  <p class="section-intro">Ogni giorno quattro sorgenti alimentano i punti giornalieri che determinano la probabilità di nascita e crescita dei tratti.</p>
-
-  <table class="tbl">
-    <thead><tr><th>Sorgente</th><th>Peso</th><th>Tratti fisici/mentali</th><th>Contatori elementali</th></tr></thead>
-    <tbody>
-      <tr><td>Azione quotidiana</td><td>50%</td><td>Dipende dall'azione scelta</td><td>Dipende dall'azione scelta</td></tr>
-      <tr><td>Tap frequenti (4+)</td><td>20%</td><td><span class="plus">+Agile, +Vivace</span></td><td><span class="plus">+Fuoco, +Aria, +Luce</span></td></tr>
-      <tr><td>Tap scarsi (1–3)</td><td>20%</td><td><span class="plus">+Riflessivo</span></td><td><span class="plus">+Acqua, +Terra</span></td></tr>
-      <tr><td>Login frequente (1/giorno)</td><td>10%</td><td><span class="plus">+Vivace</span></td><td><span class="plus">+Aria, +Luce</span></td></tr>
-      <tr><td>Login scarso (1–3/giorno)</td><td>10%</td><td><span class="plus">+Solitario</span></td><td><span class="plus">+Terra, +Ombra</span></td></tr>
-      <tr><td>Assenza totale</td><td>—</td><td><span class="minus">+Solitario (deriva)</span></td><td><span class="minus">+Ombra (deriva)</span></td></tr>
-    </tbody>
-  </table>
+  <div class="states-diagram">
+    <div class="state-card">
+      <div class="state-name">Energia</div>
+      <div class="state-poles">
+        <div class="pole high">
+          <div class="pole-label">ALTA</div>
+          <div class="pole-trait">Agile</div>
+          <div class="pole-aff">→ Aria</div>
+        </div>
+        <div class="state-vs">vs</div>
+        <div class="pole low">
+          <div class="pole-label">BASSA</div>
+          <div class="pole-trait">Robusto</div>
+          <div class="pole-aff">→ Terra</div>
+        </div>
+      </div>
+    </div>
+    <div class="state-card">
+      <div class="state-name">Umore</div>
+      <div class="state-poles">
+        <div class="pole high">
+          <div class="pole-label">ALTO</div>
+          <div class="pole-trait">Vivace</div>
+          <div class="pole-aff">→ Fuoco</div>
+        </div>
+        <div class="state-vs">vs</div>
+        <div class="pole low">
+          <div class="pole-label">BASSO</div>
+          <div class="pole-trait">Riflessivo</div>
+          <div class="pole-aff">→ Acqua</div>
+        </div>
+      </div>
+    </div>
+    <div class="state-card">
+      <div class="state-name">Socialità</div>
+      <div class="state-poles">
+        <div class="pole high">
+          <div class="pole-label">ALTA</div>
+          <div class="pole-trait">Curioso</div>
+          <div class="pole-aff">→ Luce</div>
+        </div>
+        <div class="state-vs">vs</div>
+        <div class="pole low">
+          <div class="pole-label">BASSA</div>
+          <div class="pole-trait">Solitario</div>
+          <div class="pole-aff">→ Ombra</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="card">
-    <div class="card-title">PROBABILITÀ GIORNALIERA</div>
-    <p>I punti accumulati durante la giornata determinano la probabilità che un tratto nasca o cresca di livello. La probabilità sale con le interazioni e scende dopo ogni avanzamento. I livelli alti richiedono molti giorni attivi — la curva è esponenziale e non ha limite.</p>
-    <p style="margin-top:10px;font-size:15px;color:var(--muted)">Il caso contribuisce al 20% del calcolo giornaliero — può accelerare, rallentare o deviare uno sviluppo in modo imprevedibile.</p>
+    <div class="card-title">COME FUNZIONA</div>
+    <p>Lo stato a fine giornata dà un bonus probabilità al tratto corrispondente. Se l'Energia è alta, aumenta la probabilità che Agile cresca. Se è bassa, favorisce Robusto. Appena uno dei due tratti di una coppia viene ottenuto, l'altro è bloccato per sempre.</p>
   </div>
 </section>
 
 <!-- TRATTI -->
 <section id="tratti">
   <h2 class="section-title">I Tratti</h2>
-  <p class="section-intro">I tratti sono il cuore del gioco. Non hanno limite di livello — ogni livello successivo è sempre più difficile da raggiungere.</p>
-
-  <div class="card">
-    <div class="card-title">TRE COPPIE ESCLUSIVE</div>
-    <p>Esistono 6 tratti base divisi in 3 coppie. Appena ottieni un tratto di una coppia, l'altro è bloccato per sempre. Questa scelta — spesso inconsapevole nei primi giorni — determina tutto il percorso successivo.</p>
-  </div>
+  <p class="section-intro">6 tratti base, 3 coppie esclusive. Ogni tratto è associato a un'affinità elementale. Non hanno limite di livello — la curva è esponenziale.</p>
 
   <div class="pairs-grid">
     <div class="pair-card">
       <div class="pair-names"><span class="pair-name">Robusto</span><span class="pair-x">✕</span><span class="pair-name">Agile</span></div>
-      <div class="pair-arrow">↓ &nbsp; ↓</div>
-      <div style="margin-top:6px"><span class="el-pill el-earth">Terra</span><span class="el-pill el-air">Aria</span></div>
+      <div style="margin-top:8px"><span class="el-pill el-earth">Terra</span><span class="el-pill el-air">Aria</span></div>
     </div>
     <div class="pair-card">
       <div class="pair-names"><span class="pair-name">Vivace</span><span class="pair-x">✕</span><span class="pair-name">Riflessivo</span></div>
-      <div class="pair-arrow">↓ &nbsp; ↓</div>
-      <div style="margin-top:6px"><span class="el-pill el-fire">Fuoco</span><span class="el-pill el-water">Acqua</span></div>
+      <div style="margin-top:8px"><span class="el-pill el-fire">Fuoco</span><span class="el-pill el-water">Acqua</span></div>
     </div>
     <div class="pair-card">
       <div class="pair-names"><span class="pair-name">Curioso</span><span class="pair-x">✕</span><span class="pair-name">Solitario</span></div>
-      <div class="pair-arrow">↓ &nbsp; ↓</div>
-      <div style="margin-top:6px"><span class="el-pill el-light">Luce</span><span class="el-pill el-shadow">Ombra</span></div>
+      <div style="margin-top:8px"><span class="el-pill el-light">Luce</span><span class="el-pill el-shadow">Ombra</span></div>
     </div>
   </div>
 
-  <div class="card" style="margin-top:4px">
-    <div class="card-title">COME EMERGONO</div>
-    <p>Ogni tratto emerge probabilisticamente dalle azioni quotidiane e dalle interazioni. Non puoi scegliere direttamente quale tratto sviluppare — puoi solo orientare le azioni nella direzione giusta e attendere.</p>
-  </div>
-
-  <div class="card rare" style="margin-top:12px">
+  <div class="card rare">
     <div class="card-title">TRATTI RARI ✦</div>
-    <p>Si sbloccano solo quando l'OON ha raggiunto lo stadio Antico con una razza completa. Sono esclusivi di ogni razza, la loro curva di livellamento è esponenzialmente più ripida. Levellare i tratti rari è l'obiettivo a lunghissimo termine.</p>
+    <p>Si sbloccano solo quando l'OON ha raggiunto lo stadio Antico con una razza completa. Esclusivi di ogni razza, curva esponenzialmente più ripida. Sono l'obiettivo a lunghissimo termine.</p>
+  </div>
+</section>
+
+<!-- INTERAZIONI -->
+<section id="interazioni">
+  <h2 class="section-title">Le Interazioni</h2>
+  <p class="section-intro">Ogni giorno le interazioni modificano i tre stati. Gli stati a fine giornata determinano la probabilità di nascita e crescita dei tratti. Il caso contribuisce al 20%.</p>
+
+  <table class="tbl">
+    <thead><tr><th>Sorgente</th><th>Energia</th><th>Umore</th><th>Socialità</th></tr></thead>
+    <tbody>
+      <tr><td>Login frequente (1/giorno)</td><td class="neutral">—</td><td class="up">↑</td><td class="up2">↑↑</td></tr>
+      <tr><td>Login scarso (1–3/giorno)</td><td class="neutral">—</td><td class="down">↓</td><td class="down">↓</td></tr>
+      <tr><td>Tap frequenti (4+)</td><td class="down">↓</td><td class="up2">↑↑</td><td class="up2">↑↑</td></tr>
+      <tr><td>Tap scarsi (1–3)</td><td class="neutral">—</td><td class="up">↑</td><td class="up">↑</td></tr>
+      <tr><td>Assenza totale</td><td class="up">↑</td><td class="down">↓</td><td class="down2">↓↓</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card">
+    <div class="card-title">DECADIMENTO NATURALE</div>
+    <p>Con il passare del tempo senza fare nulla: Energia ↑, Umore ↓, Socialità ↓. Chi non interagisce attivamente deriva naturalmente verso Robusto, Riflessivo e Solitario — e quindi verso Terra, Acqua e Ombra.</p>
   </div>
 </section>
 
 <!-- AZIONI -->
 <section id="azioni">
   <h2 class="section-title">Le Azioni</h2>
-  <p class="section-intro">Ogni giorno puoi compiere 1 azione tra quelle disponibili. Le abilità possono aumentare questo numero nel tempo.</p>
+  <p class="section-intro">Ogni giorno puoi compiere 1 azione tra quelle disponibili. Le abilità possono aumentare questo numero nel tempo. Ogni azione modifica gli stati e orienta i tratti.</p>
 
   <div class="card">
     <div class="card-title">AZIONI BASE — disponibili da subito</div>
     <table class="tbl" style="margin-top:8px">
-      <thead><tr><th>Azione</th><th>Stati</th><th>Tratti</th><th>Elementale</th></tr></thead>
+      <thead><tr><th>Azione</th><th>Energia</th><th>Umore</th><th>Socialità</th><th>Favorisce</th></tr></thead>
       <tbody>
         <tr>
           <td>Mangia</td>
-          <td><span class="plus">↑ Fame ↑ Energia</span></td>
-          <td><span class="plus">+Robusto</span></td>
-          <td><span class="plus">+Terra, +Fuoco</span></td>
+          <td class="down">↓</td><td class="up">↑</td><td class="up">↑</td>
+          <td><span class="el-pill el-earth" style="font-size:10px">Terra</span><span class="el-pill el-fire" style="font-size:10px">Fuoco</span><span class="el-pill el-light" style="font-size:10px">Luce</span></td>
         </tr>
         <tr>
           <td>Bevi</td>
-          <td><span class="plus">↑ Fame ↑ Salute</span></td>
-          <td>—</td>
-          <td><span class="plus">+Acqua, +Aria</span></td>
+          <td class="up">↑</td><td class="down">↓</td><td class="down">↓</td>
+          <td><span class="el-pill el-air" style="font-size:10px">Aria</span><span class="el-pill el-water" style="font-size:10px">Acqua</span><span class="el-pill el-shadow" style="font-size:10px">Ombra</span></td>
         </tr>
       </tbody>
     </table>
@@ -290,42 +319,32 @@ footer { text-align:center; padding:40px 24px; color:var(--muted); font-size:13p
   <div class="card" style="margin-top:4px">
     <div class="card-title">AZIONI AVANZATE — sbloccate da abilità</div>
     <table class="tbl" style="margin-top:8px">
-      <thead><tr><th>Azione</th><th>Sblocco</th><th>Stati</th><th>Tratti</th><th>Elementale</th></tr></thead>
+      <thead><tr><th>Azione</th><th>Sblocco</th><th>Energia</th><th>Umore</th><th>Socialità</th><th>Favorisce</th></tr></thead>
       <tbody>
         <tr>
-          <td>Gioca</td>
-          <td style="color:var(--muted);font-size:13px">Entusiasmo lv1</td>
-          <td><span class="plus">↑↑ Umore</span> <span class="minus">↓ Energia</span></td>
-          <td><span class="plus">+Agile, +Vivace</span></td>
-          <td><span class="plus">+Aria, +Luce</span></td>
+          <td>Gioca</td><td style="color:var(--muted);font-size:12px">Entusiasmo lv1</td>
+          <td class="down">↓</td><td class="up2">↑↑</td><td class="up2">↑↑</td>
+          <td><span class="el-pill el-fire" style="font-size:10px">Fuoco</span><span class="el-pill el-air" style="font-size:10px">Aria</span><span class="el-pill el-light" style="font-size:10px">Luce</span></td>
         </tr>
         <tr>
-          <td>Esplora</td>
-          <td style="color:var(--muted);font-size:13px">Fiuto lv1</td>
-          <td><span class="plus">↑ Umore</span> <span class="minus">↓ Energia ↓ Fame</span></td>
-          <td><span class="plus">+Agile, +Curioso</span></td>
-          <td><span class="plus">+Fuoco, +Aria</span></td>
+          <td>Esplora</td><td style="color:var(--muted);font-size:12px">Fiuto lv1</td>
+          <td class="down">↓</td><td class="up2">↑↑</td><td class="up">↑</td>
+          <td><span class="el-pill el-fire" style="font-size:10px">Fuoco</span><span class="el-pill el-air" style="font-size:10px">Aria</span><span class="el-pill el-light" style="font-size:10px">Luce</span></td>
         </tr>
         <tr>
-          <td>Medita</td>
-          <td style="color:var(--muted);font-size:13px">Meditazione lv1</td>
-          <td><span class="plus">↑ Salute ↑ Umore</span></td>
-          <td><span class="plus">+Riflessivo, +Solitario</span></td>
-          <td><span class="plus">+Acqua, +Ombra</span></td>
+          <td>Medita</td><td style="color:var(--muted);font-size:12px">Meditazione lv1</td>
+          <td class="up">↑</td><td class="up">↑</td><td class="down">↓</td>
+          <td><span class="el-pill el-earth" style="font-size:10px">Terra</span><span class="el-pill el-water" style="font-size:10px">Acqua</span><span class="el-pill el-shadow" style="font-size:10px">Ombra</span></td>
         </tr>
         <tr>
-          <td>Caccia</td>
-          <td style="color:var(--muted);font-size:13px">Predatore lv1</td>
-          <td><span class="plus">↑↑ Fame</span> <span class="minus">↓↓ Energia</span></td>
-          <td><span class="plus">+Agile, +Robusto</span></td>
-          <td><span class="plus">+Fuoco, +Terra</span></td>
+          <td>Caccia</td><td style="color:var(--muted);font-size:12px">Predatore lv1</td>
+          <td class="down">↓</td><td class="up">↑</td><td class="up">↑</td>
+          <td><span class="el-pill el-earth" style="font-size:10px">Terra</span><span class="el-pill el-fire" style="font-size:10px">Fuoco</span><span class="el-pill el-air" style="font-size:10px">Aria</span></td>
         </tr>
         <tr class="rare-row">
-          <td>Azione Unica ✦</td>
-          <td style="color:var(--rare);font-size:13px">Abilità razza (Ancient)</td>
-          <td style="color:var(--rare);font-size:13px">Dipende dalla razza</td>
-          <td style="color:var(--rare);font-size:13px">Multipli</td>
-          <td style="color:var(--rare);font-size:13px">Multipli</td>
+          <td>Azione Unica ✦</td><td style="color:var(--rare);font-size:12px">Abilità razza Ancient</td>
+          <td colspan="3" style="color:var(--rare);font-size:12px">Dipende dalla razza</td>
+          <td style="color:var(--rare);font-size:12px">Multipli</td>
         </tr>
       </tbody>
     </table>
@@ -335,58 +354,59 @@ footer { text-align:center; padding:40px 24px; color:var(--muted); font-size:13p
 <!-- ABILITÀ -->
 <section id="abilita">
   <h2 class="section-title">Le Abilità</h2>
-  <p class="section-intro">A fine settimana i tratti vengono valutati per la nascita di abilità. Le abilità cambiano le regole del gioco — sbloccano azioni, modificano consumi, aumentano le azioni disponibili. Anche le abilità hanno livelli infiniti con curva esponenziale.</p>
+  <p class="section-intro">A fine settimana i tratti vengono valutati per la nascita di abilità. Le abilità cambiano le regole del gioco — sbloccano azioni, modificano consumi, aumentano le azioni disponibili. Livelli infiniti, curva esponenziale.</p>
 
   <div class="card">
     <div class="card-title">ABILITÀ BASE</div>
     <table class="tbl" style="margin-top:8px">
       <thead><tr><th>Prerequisiti</th><th>Abilità</th><th>Effetto</th></tr></thead>
       <tbody>
-        <tr><td>Robusto lv3</td><td>Vitalità</td><td>Salute scende più lentamente</td></tr>
-        <tr><td>Agile lv3</td><td>Scatto</td><td>Esplora consuma meno energia</td></tr>
+        <tr><td>Robusto lv3</td><td>Vitalità</td><td>Gli stati scendono più lentamente</td></tr>
+        <tr><td>Agile lv3</td><td>Scatto</td><td>Le azioni fisiche consumano meno energia</td></tr>
         <tr><td>Vivace lv3</td><td>Entusiasmo</td><td>Sblocca Gioca · Umore più efficace</td></tr>
         <tr><td>Riflessivo lv3</td><td>Concentrazione</td><td>Medita più efficace sui tratti</td></tr>
-        <tr><td>Curioso lv3</td><td>Fiuto</td><td>Sblocca Esplora · +punti elementali</td></tr>
-        <tr><td>Solitario lv3</td><td>Autosufficienza</td><td>Fame scende più lentamente</td></tr>
+        <tr><td>Curioso lv3</td><td>Fiuto</td><td>Sblocca Esplora · Bonus probabilità tratti</td></tr>
+        <tr><td>Solitario lv3</td><td>Autosufficienza</td><td>Gli stati calano più lentamente in assenza</td></tr>
         <tr><td>Robusto lv8 + Vivace lv5</td><td>Predatore</td><td>Sblocca Caccia</td></tr>
         <tr><td>Riflessivo lv8 + Solitario lv5</td><td>Meditazione</td><td>Sblocca Medita</td></tr>
-        <tr><td>Vivace lv8 + Curioso lv5</td><td>Intelligenza</td><td>lv1=+1 azione · lv10=+2 · lv30=+3</td></tr>
+        <tr><td>Vivace lv8 + Curioso lv5</td><td>Intelligenza</td><td>lv1 = +1 azione · lv10 = +2 · lv30 = +3</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="card rare" style="margin-top:12px">
     <div class="card-title">ABILITÀ UNICHE DI RAZZA ✦</div>
-    <p>Si sbloccano raggiungendo lo stadio Ancient con la razza. Ogni abilità unica combina effetti su più tratti, stati e contatori elementali in una sola azione — è l'azione unica esclusiva di quell'OON.</p>
+    <p>Si sbloccano raggiungendo lo stadio Ancient con la razza. Ogni abilità unica combina effetti su più stati e tratti in una sola azione — è l'azione unica esclusiva di quell'OON. Anche queste hanno livelli infiniti.</p>
   </div>
 </section>
 
 <!-- AFFINITÀ -->
 <section id="affinita">
   <h2 class="section-title">Affinità Elementali</h2>
-  <p class="section-intro">A fine mese, se un tratto base ha raggiunto il livello soglia, può cristallizzarsi in affinità elementale. L'OON cambia aspetto.</p>
+  <p class="section-intro">A fine mese, se un tratto base ha raggiunto il livello soglia, può cristallizzarsi in affinità elementale. Raggiungere la soglia non garantisce l'affinità — la rende possibile.</p>
+
+  <table class="tbl">
+    <thead><tr><th>Tratto dominante</th><th>Affinità possibile</th><th>Livello soglia</th></tr></thead>
+    <tbody>
+      <tr><td>Robusto</td><td><span class="el-pill el-earth">Terra</span></td><td>lv5+</td></tr>
+      <tr><td>Agile</td><td><span class="el-pill el-air">Aria</span></td><td>lv5+</td></tr>
+      <tr><td>Vivace</td><td><span class="el-pill el-fire">Fuoco</span></td><td>lv5+</td></tr>
+      <tr><td>Riflessivo</td><td><span class="el-pill el-water">Acqua</span></td><td>lv5+</td></tr>
+      <tr><td>Curioso</td><td><span class="el-pill el-light">Luce</span></td><td>lv8+ (rara)</td></tr>
+      <tr><td>Solitario</td><td><span class="el-pill el-shadow">Ombra</span></td><td>lv8+ (rara)</td></tr>
+    </tbody>
+  </table>
 
   <div class="card">
-    <div class="card-title">TRATTO → AFFINITÀ</div>
-    <table class="tbl" style="margin-top:8px">
-      <thead><tr><th>Tratto dominante</th><th>Affinità possibile</th><th>Livello soglia</th></tr></thead>
-      <tbody>
-        <tr><td>Robusto</td><td><span class="el-pill el-earth">Terra</span></td><td>lv5+</td></tr>
-        <tr><td>Agile</td><td><span class="el-pill el-air">Aria</span></td><td>lv5+</td></tr>
-        <tr><td>Vivace</td><td><span class="el-pill el-fire">Fuoco</span></td><td>lv5+</td></tr>
-        <tr><td>Riflessivo</td><td><span class="el-pill el-water">Acqua</span></td><td>lv5+</td></tr>
-        <tr><td>Curioso</td><td><span class="el-pill el-light">Luce</span></td><td>lv8+ (rara)</td></tr>
-        <tr><td>Solitario</td><td><span class="el-pill el-shadow">Ombra</span></td><td>lv8+ (rara)</td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:10px;font-size:14px;color:var(--muted)">Raggiungere la soglia non garantisce l'affinità — la rende possibile. Il caso e i tratti secondari influenzano il risultato. Con tre tratti attivi e le esclusioni, l'affinità emergente dipende dal tratto più alto.</p>
+    <div class="card-title">AFFINITÀ DOMINANTE</div>
+    <p>Con tre tratti attivi e le esclusioni, a fine mese viene valutato il tratto più alto. In caso di parità il caso decide. L'affinità ottenuta cambierà l'aspetto dell'OON e aprirà la strada alle razze.</p>
   </div>
 </section>
 
 <!-- RAZZE -->
 <section id="razze">
   <h2 class="section-title">Le Razze</h2>
-  <p class="section-intro">Dopo aver ottenuto un'affinità, a fine mese l'OON può specializzarsi in una delle tre razze di quell'elemento. La razza dipende dalla combinazione specifica dei tre tratti attivi.</p>
+  <p class="section-intro">Dopo aver ottenuto un'affinità, a fine mese l'OON può specializzarsi in una delle tre razze di quell'elemento. La razza dipende dalla combinazione dei tre tratti attivi.</p>
 
   <div class="sprite-showcase">
     <img src="res/sprites512.png" alt="OON razze — 18 varianti con stadi Young Teen Ancient">
@@ -396,42 +416,42 @@ footer { text-align:center; padding:40px 24px; color:var(--muted); font-size:13p
   <div class="races-grid">
     <div class="race-card">
       <div class="race-el">🔥 FUOCO</div>
-      <div class="race-name">Ember OON</div><div class="race-ability">Brace Viva — +Vivace +Robusto +Fuoco</div>
-      <div class="race-name" style="margin-top:8px">Ashfang OON</div><div class="race-ability">Morso Ardente — +Agile +Vivace +Fuoco</div>
-      <div class="race-name" style="margin-top:8px">Infernal OON</div><div class="race-ability">Furia — +Robusto +Vivace +Fuoco +Ombra</div>
+      <div class="race-name">Ember OON</div><div class="race-ability">Brace Viva</div>
+      <div class="race-name">Ashfang OON</div><div class="race-ability">Morso Ardente</div>
+      <div class="race-name">Infernal OON</div><div class="race-ability">Furia</div>
     </div>
     <div class="race-card">
       <div class="race-el">💧 ACQUA</div>
-      <div class="race-name">Tide OON</div><div class="race-ability">Corrente — +Agile +Riflessivo +Acqua</div>
-      <div class="race-name" style="margin-top:8px">Dreamcurrent OON</div><div class="race-ability">Deriva — +Riflessivo +Solitario +Acqua</div>
-      <div class="race-name" style="margin-top:8px">Abyssal OON</div><div class="race-ability">Abisso — +Robusto +Solitario +Acqua</div>
+      <div class="race-name">Tide OON</div><div class="race-ability">Corrente</div>
+      <div class="race-name">Dreamcurrent OON</div><div class="race-ability">Deriva</div>
+      <div class="race-name">Abyssal OON</div><div class="race-ability">Abisso</div>
     </div>
     <div class="race-card">
       <div class="race-el">🌿 TERRA</div>
-      <div class="race-name">Mossback OON</div><div class="race-ability">Radicamento — +Robusto +Solitario +Terra</div>
-      <div class="race-name" style="margin-top:8px">Crystalroot OON</div><div class="race-ability">Cristallizzazione — +Robusto +Riflessivo +Terra</div>
-      <div class="race-name" style="margin-top:8px">Ancient Grove OON</div><div class="race-ability">Foresta Antica — +Robusto +Curioso +Terra</div>
+      <div class="race-name">Mossback OON</div><div class="race-ability">Radicamento</div>
+      <div class="race-name">Crystalroot OON</div><div class="race-ability">Cristallizzazione</div>
+      <div class="race-name">Ancient Grove OON</div><div class="race-ability">Foresta Antica</div>
     </div>
     <div class="race-card">
       <div class="race-el">💨 ARIA</div>
-      <div class="race-name">Gale OON</div><div class="race-ability">Raffica — +Agile +Vivace +Aria</div>
-      <div class="race-name" style="margin-top:8px">Echowing OON</div><div class="race-ability">Risonanza — +Agile +Curioso +Aria</div>
-      <div class="race-name" style="margin-top:8px">Stormveil OON</div><div class="race-ability">Tempesta — +Agile +Vivace +Aria +Fuoco</div>
+      <div class="race-name">Gale OON</div><div class="race-ability">Raffica</div>
+      <div class="race-name">Echowing OON</div><div class="race-ability">Risonanza</div>
+      <div class="race-name">Stormveil OON</div><div class="race-ability">Tempesta</div>
     </div>
     <div class="race-card">
       <div class="race-el">✨ LUCE</div>
-      <div class="race-name">Halo OON</div><div class="race-ability">Aureola — +Curioso +Vivace +Luce</div>
-      <div class="race-name" style="margin-top:8px">Starborn OON</div><div class="race-ability">Luce Stellare — +Curioso +Riflessivo +Luce ✦</div>
-      <div class="race-name" style="margin-top:8px">Seraph OON</div><div class="race-ability">Grazia — +Curioso +Agile +Luce +Aria</div>
+      <div class="race-name">Halo OON</div><div class="race-ability">Aureola</div>
+      <div class="race-name">Starborn OON</div><div class="race-ability">Luce Stellare ✦</div>
+      <div class="race-name">Seraph OON</div><div class="race-ability">Grazia</div>
     </div>
     <div class="race-card">
       <div class="race-el">🌑 OMBRA</div>
-      <div class="race-name">Hollow OON</div><div class="race-ability">Vuoto — +Solitario +Riflessivo +Ombra</div>
-      <div class="race-name" style="margin-top:8px">Duskmaw OON</div><div class="race-ability">Predazione Oscura — +Solitario +Robusto +Ombra</div>
-      <div class="race-name" style="margin-top:8px">Void OON</div><div class="race-ability">Dissoluzione — +Solitario +Riflessivo +Ombra ✦</div>
+      <div class="race-name">Hollow OON</div><div class="race-ability">Vuoto</div>
+      <div class="race-name">Duskmaw OON</div><div class="race-ability">Predazione Oscura</div>
+      <div class="race-name">Void OON</div><div class="race-ability">Dissoluzione ✦</div>
     </div>
   </div>
-  <p style="font-size:14px;color:var(--muted);margin-top:8px">✦ Starborn e Void danno bonus aggiuntivi ai tratti rari.</p>
+  <p style="font-size:14px;color:var(--muted);margin-top:4px">✦ Starborn e Void danno bonus aggiuntivi ai tratti rari.</p>
 </section>
 
 <!-- CRESCITA -->
@@ -439,26 +459,32 @@ footer { text-align:center; padding:40px 24px; color:var(--muted); font-size:13p
   <h2 class="section-title">Crescita di Stadio</h2>
   <p class="section-intro">La crescita è indipendente dall'affinità. Avviene a fine mese quando tutti e tre i tratti attivi hanno superato la stessa soglia.</p>
 
-  <div class="card">
-    <div class="card-title">SOGLIE DI CRESCITA</div>
-    <table class="tbl" style="margin-top:8px">
-      <thead><tr><th>Transizione</th><th>Condizione</th></tr></thead>
-      <tbody>
-        <tr><td>Cucciolo → Giovane</td><td>Tutti e 3 i tratti attivi lv15+</td></tr>
-        <tr><td>Giovane → Antico</td><td>Tutti e 3 i tratti attivi lv30+</td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:10px;font-size:14px;color:var(--muted)">Anche qui vale la probabilità — raggiungere la soglia non garantisce la crescita immediata. I livelli sono indicativi e potranno essere bilanciati.</p>
-  </div>
+  <table class="tbl">
+    <thead><tr><th>Transizione</th><th>Condizione</th></tr></thead>
+    <tbody>
+      <tr><td>Cucciolo → Giovane</td><td>Tutti e 3 i tratti attivi lv15+</td></tr>
+      <tr><td>Giovane → Antico</td><td>Tutti e 3 i tratti attivi lv30+</td></tr>
+    </tbody>
+  </table>
 
   <div class="flow">
-    <div class="flow-step hl">Cucciolo</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">Giovane</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">Antico</div>
-    <div class="flow-arrow">→</div>
+    <div class="flow-step hl">Cucciolo</div><div class="flow-arrow">→</div>
+    <div class="flow-step">Giovane</div><div class="flow-arrow">→</div>
+    <div class="flow-step">Antico</div><div class="flow-arrow">→</div>
     <div class="flow-step rare-step">Tratti Rari ✦</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">PERCORSO COMPLETO — ESEMPIO</div>
+    <div class="flow">
+      <div class="flow-step hl">Uovo</div><div class="flow-arrow">→</div>
+      <div class="flow-step hl">Cucciolo Base</div><div class="flow-arrow">→</div>
+      <div class="flow-step">Cucciolo Fuoco</div><div class="flow-arrow">→</div>
+      <div class="flow-step">Giovane Fuoco</div><div class="flow-arrow">→</div>
+      <div class="flow-step">Ember OON Teen</div><div class="flow-arrow">→</div>
+      <div class="flow-step">Ember OON Ancient</div><div class="flow-arrow">→</div>
+      <div class="flow-step rare-step">Brace Viva ✦</div>
+    </div>
   </div>
 </section>
 
