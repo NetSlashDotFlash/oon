@@ -7,9 +7,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:#08070f; --card:#14112a; --border:#2a2250;
-  --accent:#c4aaff; --accent2:#7b5ea7; --text:#e8e0ff; --muted:#7a6ea0;
-  --rare:#ffcc55; --rare-bg:rgba(255,204,85,0.08); --rare-border:rgba(255,204,85,0.25);
+  --bg:#08070f;--card:#14112a;--border:#2a2250;
+  --accent:#c4aaff;--accent2:#7b5ea7;--text:#e8e0ff;--muted:#7a6ea0;
+  --rare:#ffcc55;--rare-bg:rgba(255,204,85,.08);--rare-border:rgba(255,204,85,.25);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -94,6 +94,16 @@ h2.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
 .el-light{background:rgba(204,170,34,.15);color:#e8cc60;border-color:rgba(204,170,34,.3)}
 .el-shadow{background:rgba(136,51,204,.15);color:#bb77ee;border-color:rgba(136,51,204,.3)}
 
+.actions-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}
+.action-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px}
+.action-card.advanced{border-color:var(--accent2)}
+.action-card.rare-action{border-color:var(--rare-border);background:var(--rare-bg)}
+.action-name{font-family:'Cinzel',serif;font-size:13px;color:var(--accent);margin-bottom:4px}
+.action-card.rare-action .action-name{color:var(--rare)}
+.action-trait{font-size:12px;margin-bottom:6px}
+.action-states{font-size:12px;color:var(--muted)}
+.action-unlock{font-size:11px;color:var(--accent2);margin-top:4px;font-style:italic}
+
 .races-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
 .race-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px}
 .race-el{font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;color:var(--muted);margin-bottom:6px}
@@ -111,7 +121,7 @@ h2.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
 footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:13px;letter-spacing:1px;border-top:1px solid var(--border)}
 
 @media(max-width:600px){
-  .timer-grid,.pairs-grid,.races-grid,.states-diagram{grid-template-columns:1fr}
+  .timer-grid,.pairs-grid,.races-grid,.states-diagram,.actions-grid{grid-template-columns:1fr}
   .flow-step{font-size:11px;padding:6px 10px}
 }
 </style>
@@ -162,7 +172,7 @@ footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:13px;let
     <div class="timer-card">
       <span class="timer-icon">☀️</span>
       <div class="timer-label">OGNI GIORNO</div>
-      <div class="timer-desc">Le interazioni modificano gli stati. Gli stati determinano la probabilità di nascita o crescita di ogni tratto.</div>
+      <div class="timer-desc">Le interazioni modificano gli stati. Gli stati determinano la probabilità di nascita o crescita di ogni tratto. Il caso pesa il 20%.</div>
     </div>
     <div class="timer-card">
       <span class="timer-icon">🌙</span>
@@ -178,92 +188,67 @@ footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:13px;let
   <div class="card" style="margin-top:16px">
     <div class="card-title">GIORNI DI ASSENZA</div>
     <p>Se non ti colleghi, i giorni mancanti vengono simulati al rientro con valori medi e più caso. Col tempo l'energia sale, l'umore e la socialità scendono — il tuo OON deriva verso Robusto, Riflessivo e Solitario, e quindi verso Terra, Acqua e Ombra. Un'assenza prolungata è irreversibile.</p>
-    <p style="margin-top:10px;font-size:15px;color:var(--muted)">Un solo login senza interazioni equivale all'assenza. Per essere presente: login + tap + azione.</p>
+    <p style="margin-top:10px;font-size:15px;color:var(--muted)">Un solo login senza interazioni equivale all'assenza. Per essere presente: almeno 3 login al giorno + tap + azione.</p>
   </div>
 </section>
 
 <!-- STATI -->
 <section id="stati">
   <h2 class="section-title">Gli Stati</h2>
-  <p class="section-intro">Tre stati descrivono la condizione del tuo OON. Ogni stato ha due polarità — alta e bassa — che favoriscono tratti opposti. Col passare del tempo senza interazioni, l'energia sale, l'umore e la socialità scendono.</p>
-
+  <p class="section-intro">Tre stati descrivono la condizione del tuo OON. Ogni stato ha due polarità che favoriscono tratti opposti. Col passare del tempo senza interazioni, l'energia sale, l'umore e la socialità scendono.</p>
   <div class="states-diagram">
     <div class="state-card">
       <div class="state-name">Energia</div>
       <div class="state-poles">
-        <div class="pole high">
-          <div class="pole-label">ALTA</div>
-          <div class="pole-trait">Agile</div>
-          <div class="pole-aff">→ Aria</div>
-        </div>
+        <div class="pole high"><div class="pole-label">ALTA</div><div class="pole-trait">Agile</div><div class="pole-aff">→ Aria</div></div>
         <div class="state-vs">vs</div>
-        <div class="pole low">
-          <div class="pole-label">BASSA</div>
-          <div class="pole-trait">Robusto</div>
-          <div class="pole-aff">→ Terra</div>
-        </div>
+        <div class="pole low"><div class="pole-label">BASSA</div><div class="pole-trait">Robusto</div><div class="pole-aff">→ Terra</div></div>
       </div>
     </div>
     <div class="state-card">
       <div class="state-name">Umore</div>
       <div class="state-poles">
-        <div class="pole high">
-          <div class="pole-label">ALTO</div>
-          <div class="pole-trait">Vivace</div>
-          <div class="pole-aff">→ Fuoco</div>
-        </div>
+        <div class="pole high"><div class="pole-label">ALTO</div><div class="pole-trait">Vivace</div><div class="pole-aff">→ Fuoco</div></div>
         <div class="state-vs">vs</div>
-        <div class="pole low">
-          <div class="pole-label">BASSO</div>
-          <div class="pole-trait">Riflessivo</div>
-          <div class="pole-aff">→ Acqua</div>
-        </div>
+        <div class="pole low"><div class="pole-label">BASSO</div><div class="pole-trait">Riflessivo</div><div class="pole-aff">→ Acqua</div></div>
       </div>
     </div>
     <div class="state-card">
       <div class="state-name">Socialità</div>
       <div class="state-poles">
-        <div class="pole high">
-          <div class="pole-label">ALTA</div>
-          <div class="pole-trait">Curioso</div>
-          <div class="pole-aff">→ Luce</div>
-        </div>
+        <div class="pole high"><div class="pole-label">ALTA</div><div class="pole-trait">Curioso</div><div class="pole-aff">→ Luce</div></div>
         <div class="state-vs">vs</div>
-        <div class="pole low">
-          <div class="pole-label">BASSA</div>
-          <div class="pole-trait">Solitario</div>
-          <div class="pole-aff">→ Ombra</div>
-        </div>
+        <div class="pole low"><div class="pole-label">BASSA</div><div class="pole-trait">Solitario</div><div class="pole-aff">→ Ombra</div></div>
       </div>
     </div>
   </div>
-
   <div class="card">
     <div class="card-title">COME FUNZIONA</div>
-    <p>Lo stato a fine giornata dà un bonus probabilità al tratto corrispondente. Se l'Energia è alta, aumenta la probabilità che Agile cresca. Se è bassa, favorisce Robusto. Appena uno dei due tratti di una coppia viene ottenuto, l'altro è bloccato per sempre.</p>
+    <p>Lo stato a fine giornata dà un bonus probabilità al tratto corrispondente. Appena uno dei due tratti di una coppia viene ottenuto, l'altro è bloccato per sempre — spesso questa scelta avviene inconsapevolmente nei primi giorni.</p>
   </div>
 </section>
 
 <!-- TRATTI -->
 <section id="tratti">
   <h2 class="section-title">I Tratti</h2>
-  <p class="section-intro">6 tratti base, 3 coppie esclusive. Ogni tratto è associato a un'affinità elementale. Non hanno limite di livello — la curva è esponenziale.</p>
-
+  <p class="section-intro">6 tratti base, 3 coppie esclusive. Ogni tratto è direttamente associato a un'affinità elementale e a un'azione. Non hanno limite di livello — la curva è esponenziale.</p>
   <div class="pairs-grid">
     <div class="pair-card">
       <div class="pair-names"><span class="pair-name">Robusto</span><span class="pair-x">✕</span><span class="pair-name">Agile</span></div>
       <div style="margin-top:8px"><span class="el-pill el-earth">Terra</span><span class="el-pill el-air">Aria</span></div>
+      <div style="margin-top:6px;font-size:12px;color:var(--muted)">Mangia · Bevi</div>
     </div>
     <div class="pair-card">
       <div class="pair-names"><span class="pair-name">Vivace</span><span class="pair-x">✕</span><span class="pair-name">Riflessivo</span></div>
       <div style="margin-top:8px"><span class="el-pill el-fire">Fuoco</span><span class="el-pill el-water">Acqua</span></div>
+      <div style="margin-top:6px;font-size:12px;color:var(--muted)">Gioca · Medita</div>
     </div>
     <div class="pair-card">
       <div class="pair-names"><span class="pair-name">Curioso</span><span class="pair-x">✕</span><span class="pair-name">Solitario</span></div>
       <div style="margin-top:8px"><span class="el-pill el-light">Luce</span><span class="el-pill el-shadow">Ombra</span></div>
+      <div style="margin-top:6px;font-size:12px;color:var(--muted)">Esplora · Caccia</div>
     </div>
   </div>
-
   <div class="card rare">
     <div class="card-title">TRATTI RARI ✦</div>
     <p>Si sbloccano solo quando l'OON ha raggiunto lo stadio Antico con una razza completa. Esclusivi di ogni razza, curva esponenzialmente più ripida. Sono l'obiettivo a lunghissimo termine.</p>
@@ -273,19 +258,17 @@ footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:13px;let
 <!-- INTERAZIONI -->
 <section id="interazioni">
   <h2 class="section-title">Le Interazioni</h2>
-  <p class="section-intro">Ogni giorno le interazioni modificano i tre stati. Gli stati a fine giornata determinano la probabilità di nascita e crescita dei tratti. Il caso contribuisce al 20%.</p>
-
+  <p class="section-intro">Ogni giorno le interazioni modificano i tre stati. Soglia di presenza: almeno 3 login al giorno. Sotto quella soglia equivale a essere assenti.</p>
   <table class="tbl">
     <thead><tr><th>Sorgente</th><th>Energia</th><th>Umore</th><th>Socialità</th></tr></thead>
     <tbody>
-      <tr><td>Login frequente (1/giorno)</td><td class="neutral">—</td><td class="up">↑</td><td class="up2">↑↑</td></tr>
-      <tr><td>Login scarso (1–3/giorno)</td><td class="neutral">—</td><td class="down">↓</td><td class="down">↓</td></tr>
+      <tr><td>Login frequente (3+/giorno)</td><td class="neutral">—</td><td class="up">↑</td><td class="up2">↑↑</td></tr>
+      <tr><td>Login scarso (&lt;3/giorno)</td><td class="neutral">—</td><td class="down">↓</td><td class="down">↓</td></tr>
       <tr><td>Tap frequenti (4+)</td><td class="down">↓</td><td class="up2">↑↑</td><td class="up2">↑↑</td></tr>
       <tr><td>Tap scarsi (1–3)</td><td class="neutral">—</td><td class="up">↑</td><td class="up">↑</td></tr>
       <tr><td>Assenza totale</td><td class="up">↑</td><td class="down">↓</td><td class="down2">↓↓</td></tr>
     </tbody>
   </table>
-
   <div class="card">
     <div class="card-title">DECADIMENTO NATURALE</div>
     <p>Con il passare del tempo senza fare nulla: Energia ↑, Umore ↓, Socialità ↓. Chi non interagisce attivamente deriva naturalmente verso Robusto, Riflessivo e Solitario — e quindi verso Terra, Acqua e Ombra.</p>
@@ -295,83 +278,83 @@ footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:13px;let
 <!-- AZIONI -->
 <section id="azioni">
   <h2 class="section-title">Le Azioni</h2>
-  <p class="section-intro">Ogni giorno puoi compiere 1 azione tra quelle disponibili. Le abilità possono aumentare questo numero nel tempo. Ogni azione modifica gli stati e orienta i tratti.</p>
+  <p class="section-intro">Ogni giorno puoi compiere 1 azione tra quelle disponibili. Ogni azione è associata a un tratto specifico che sviluppa, e modifica gli stati di conseguenza.</p>
 
-  <div class="card">
-    <div class="card-title">AZIONI BASE — disponibili da subito</div>
-    <table class="tbl" style="margin-top:8px">
-      <thead><tr><th>Azione</th><th>Energia</th><th>Umore</th><th>Socialità</th><th>Favorisce</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>Mangia</td>
-          <td class="down">↓</td><td class="up">↑</td><td class="up">↑</td>
-          <td><span class="el-pill el-earth" style="font-size:10px">Terra</span><span class="el-pill el-fire" style="font-size:10px">Fuoco</span><span class="el-pill el-light" style="font-size:10px">Luce</span></td>
-        </tr>
-        <tr>
-          <td>Bevi</td>
-          <td class="up">↑</td><td class="down">↓</td><td class="down">↓</td>
-          <td><span class="el-pill el-air" style="font-size:10px">Aria</span><span class="el-pill el-water" style="font-size:10px">Acqua</span><span class="el-pill el-shadow" style="font-size:10px">Ombra</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="card" style="margin-top:4px">
-    <div class="card-title">AZIONI AVANZATE — sbloccate da abilità</div>
-    <table class="tbl" style="margin-top:8px">
-      <thead><tr><th>Azione</th><th>Sblocco</th><th>Energia</th><th>Umore</th><th>Socialità</th><th>Favorisce</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>Gioca</td><td style="color:var(--muted);font-size:12px">Entusiasmo lv1</td>
-          <td class="down">↓</td><td class="up2">↑↑</td><td class="up2">↑↑</td>
-          <td><span class="el-pill el-fire" style="font-size:10px">Fuoco</span><span class="el-pill el-air" style="font-size:10px">Aria</span><span class="el-pill el-light" style="font-size:10px">Luce</span></td>
-        </tr>
-        <tr>
-          <td>Esplora</td><td style="color:var(--muted);font-size:12px">Fiuto lv1</td>
-          <td class="down">↓</td><td class="up2">↑↑</td><td class="up">↑</td>
-          <td><span class="el-pill el-fire" style="font-size:10px">Fuoco</span><span class="el-pill el-air" style="font-size:10px">Aria</span><span class="el-pill el-light" style="font-size:10px">Luce</span></td>
-        </tr>
-        <tr>
-          <td>Medita</td><td style="color:var(--muted);font-size:12px">Meditazione lv1</td>
-          <td class="up">↑</td><td class="up">↑</td><td class="down">↓</td>
-          <td><span class="el-pill el-earth" style="font-size:10px">Terra</span><span class="el-pill el-water" style="font-size:10px">Acqua</span><span class="el-pill el-shadow" style="font-size:10px">Ombra</span></td>
-        </tr>
-        <tr>
-          <td>Caccia</td><td style="color:var(--muted);font-size:12px">Predatore lv1</td>
-          <td class="down">↓</td><td class="up">↑</td><td class="up">↑</td>
-          <td><span class="el-pill el-earth" style="font-size:10px">Terra</span><span class="el-pill el-fire" style="font-size:10px">Fuoco</span><span class="el-pill el-air" style="font-size:10px">Aria</span></td>
-        </tr>
-        <tr class="rare-row">
-          <td>Azione Unica ✦</td><td style="color:var(--rare);font-size:12px">Abilità razza Ancient</td>
-          <td colspan="3" style="color:var(--rare);font-size:12px">Dipende dalla razza</td>
-          <td style="color:var(--rare);font-size:12px">Multipli</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="actions-grid">
+    <div class="action-card">
+      <div class="action-name">Mangia</div>
+      <div class="action-trait">Tratto: <span style="color:#8acc50">Robusto → Terra</span></div>
+      <div class="action-states"><span class="down">↓ Energia</span> &nbsp; <span class="up">↑ Umore</span> &nbsp; <span class="up">↑ Socialità</span></div>
+    </div>
+    <div class="action-card">
+      <div class="action-name">Bevi</div>
+      <div class="action-trait">Tratto: <span style="color:#70d0e8">Agile → Aria</span></div>
+      <div class="action-states"><span class="up">↑ Energia</span> &nbsp; <span class="down">↓ Umore</span> &nbsp; <span class="down">↓ Socialità</span></div>
+    </div>
+    <div class="action-card">
+      <div class="action-name">Gioca</div>
+      <div class="action-trait">Tratto: <span style="color:#e8804a">Vivace → Fuoco</span></div>
+      <div class="action-states"><span class="down">↓ Energia</span> &nbsp; <span class="up2">↑↑ Umore</span> &nbsp; <span class="up2">↑↑ Socialità</span></div>
+    </div>
+    <div class="action-card">
+      <div class="action-name">Medita</div>
+      <div class="action-trait">Tratto: <span style="color:#6ab0ee">Riflessivo → Acqua</span></div>
+      <div class="action-states"><span class="up">↑ Energia</span> &nbsp; <span class="up">↑ Umore</span> &nbsp; <span class="down">↓ Socialità</span></div>
+    </div>
+    <div class="action-card advanced">
+      <div class="action-name">Esplora</div>
+      <div class="action-trait">Tratto: <span style="color:#e8cc60">Curioso → Luce</span></div>
+      <div class="action-states"><span class="down">↓ Energia</span> &nbsp; <span class="up2">↑↑ Umore</span> &nbsp; <span class="up">↑ Socialità</span></div>
+      <div class="action-unlock">Sblocco: Fiuto lv1</div>
+    </div>
+    <div class="action-card advanced">
+      <div class="action-name">Caccia</div>
+      <div class="action-trait">Tratto: <span style="color:#bb77ee">Solitario → Ombra</span></div>
+      <div class="action-states"><span class="down">↓ Energia</span> &nbsp; <span class="up">↑ Umore</span> &nbsp; <span class="up">↑ Socialità</span></div>
+      <div class="action-unlock">Sblocco: Predatore lv1</div>
+    </div>
+    <div class="action-card rare-action">
+      <div class="action-name">Azione Unica ✦</div>
+      <div class="action-trait" style="color:var(--rare)">Esclusiva per razza</div>
+      <div class="action-states" style="color:var(--rare)">Effetti multipli su stati e tratti</div>
+      <div class="action-unlock" style="color:var(--rare)">Sblocco: Abilità razza Ancient</div>
+    </div>
   </div>
 </section>
 
 <!-- ABILITÀ -->
 <section id="abilita">
   <h2 class="section-title">Le Abilità</h2>
-  <p class="section-intro">A fine settimana i tratti vengono valutati per la nascita di abilità. Le abilità cambiano le regole del gioco — sbloccano azioni, modificano consumi, aumentano le azioni disponibili. Livelli infiniti, curva esponenziale.</p>
+  <p class="section-intro">A fine settimana i tratti vengono valutati per la nascita di abilità. Ogni abilità base accelera la crescita del tratto associato. Livelli infiniti, curva esponenziale.</p>
 
   <div class="card">
-    <div class="card-title">ABILITÀ BASE</div>
+    <div class="card-title">ABILITÀ BASE — una per tratto</div>
     <table class="tbl" style="margin-top:8px">
-      <thead><tr><th>Prerequisiti</th><th>Abilità</th><th>Effetto</th></tr></thead>
+      <thead><tr><th>Prerequisito</th><th>Abilità</th><th>Effetto</th></tr></thead>
       <tbody>
-        <tr><td>Robusto lv3</td><td>Vitalità</td><td>Gli stati scendono più lentamente</td></tr>
-        <tr><td>Agile lv3</td><td>Scatto</td><td>Le azioni fisiche consumano meno energia</td></tr>
-        <tr><td>Vivace lv3</td><td>Entusiasmo</td><td>Sblocca Gioca · Umore più efficace</td></tr>
-        <tr><td>Riflessivo lv3</td><td>Concentrazione</td><td>Medita più efficace sui tratti</td></tr>
-        <tr><td>Curioso lv3</td><td>Fiuto</td><td>Sblocca Esplora · Bonus probabilità tratti</td></tr>
-        <tr><td>Solitario lv3</td><td>Autosufficienza</td><td>Gli stati calano più lentamente in assenza</td></tr>
-        <tr><td>Robusto lv8 + Vivace lv5</td><td>Predatore</td><td>Sblocca Caccia</td></tr>
-        <tr><td>Riflessivo lv8 + Solitario lv5</td><td>Meditazione</td><td>Sblocca Medita</td></tr>
-        <tr><td>Vivace lv8 + Curioso lv5</td><td>Intelligenza</td><td>lv1 = +1 azione · lv10 = +2 · lv30 = +3</td></tr>
+        <tr><td>Robusto lv3</td><td>Tempra</td><td>Accelera la crescita di Robusto</td></tr>
+        <tr><td>Agile lv3</td><td>Riflessi</td><td>Accelera la crescita di Agile</td></tr>
+        <tr><td>Vivace lv3</td><td>Entusiasmo</td><td>Accelera la crescita di Vivace</td></tr>
+        <tr><td>Riflessivo lv3</td><td>Concentrazione</td><td>Accelera la crescita di Riflessivo</td></tr>
+        <tr><td>Curioso lv3</td><td>Fiuto</td><td>Accelera Curioso · Sblocca Esplora</td></tr>
+        <tr><td>Solitario lv3</td><td>Predatore</td><td>Accelera Solitario · Sblocca Caccia</td></tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="card" style="margin-top:4px">
+    <div class="card-title">ABILITÀ SPECIALE</div>
+    <table class="tbl" style="margin-top:8px">
+      <thead><tr><th>Prerequisito</th><th>Abilità</th><th>Effetto</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Vivace lv8 + Curioso lv5</td>
+          <td>Intelligenza</td>
+          <td>lv1 = +1 azione/giorno &nbsp;·&nbsp; lv10 = +2 &nbsp;·&nbsp; lv30 = +3</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px;font-size:14px;color:var(--muted)">Intelligenza è l'unica abilità che aumenta il numero di azioni disponibili al giorno. Raggiungere lv30 richiede mesi di gioco attivo.</p>
   </div>
 
   <div class="card rare" style="margin-top:12px">
@@ -386,7 +369,7 @@ footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:13px;let
   <p class="section-intro">A fine mese, se un tratto base ha raggiunto il livello soglia, può cristallizzarsi in affinità elementale. Raggiungere la soglia non garantisce l'affinità — la rende possibile.</p>
 
   <table class="tbl">
-    <thead><tr><th>Tratto dominante</th><th>Affinità possibile</th><th>Livello soglia</th></tr></thead>
+    <thead><tr><th>Tratto dominante</th><th>Affinità</th><th>Soglia</th></tr></thead>
     <tbody>
       <tr><td>Robusto</td><td><span class="el-pill el-earth">Terra</span></td><td>lv5+</td></tr>
       <tr><td>Agile</td><td><span class="el-pill el-air">Aria</span></td><td>lv5+</td></tr>
@@ -399,7 +382,7 @@ footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:13px;let
 
   <div class="card">
     <div class="card-title">AFFINITÀ DOMINANTE</div>
-    <p>Con tre tratti attivi e le esclusioni, a fine mese viene valutato il tratto più alto. In caso di parità il caso decide. L'affinità ottenuta cambierà l'aspetto dell'OON e aprirà la strada alle razze.</p>
+    <p>Con tre tratti attivi (uno per coppia), l'affinità emerge dal tratto con il livello più alto. In caso di parità il caso decide. Luce e Ombra richiedono una soglia più alta perché le azioni che le sviluppano si sbloccano più tardi.</p>
   </div>
 </section>
 
@@ -467,14 +450,7 @@ footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:13px;let
     </tbody>
   </table>
 
-  <div class="flow">
-    <div class="flow-step hl">Cucciolo</div><div class="flow-arrow">→</div>
-    <div class="flow-step">Giovane</div><div class="flow-arrow">→</div>
-    <div class="flow-step">Antico</div><div class="flow-arrow">→</div>
-    <div class="flow-step rare-step">Tratti Rari ✦</div>
-  </div>
-
-  <div class="card">
+  <div class="card" style="margin-top:4px">
     <div class="card-title">PERCORSO COMPLETO — ESEMPIO</div>
     <div class="flow">
       <div class="flow-step hl">Uovo</div><div class="flow-arrow">→</div>
